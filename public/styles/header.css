@@ -1,0 +1,40 @@
+header > .upper-header {
+    background: #C4FFCD;
+    padding: 10px 0;
+    column-gap: 10%;
+}
+
+header.container-fluid {
+    padding: 0;
+    margin: 0;
+}
+
+.logo-text {
+    font-size: 52px;
+}
+
+.header-title {
+    font-size: 48px;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+}
+
+@media only screen and (max-width: 900px) {
+    header > .upper-header {
+        column-gap: 5%;
+    }
+}
+
+/* Offer section */
+.hide-offer {
+    background: #f6ebff;
+    padding: 23px 70px;
+}
+
+@media only screen and (max-width: 500px) {
+    .hide-offer {
+        background: #f6ebff;
+        padding: 23px 20px;
+    }
+}

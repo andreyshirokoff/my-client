@@ -1,0 +1,67 @@
+.header-container {
+    background: radial-gradient(74.86% 398.67% at 7.92% 32.37%, #559F8E 0%, #F8F8FE 100%);
+}
+
+.sub-header {
+    padding: 100px 0;
+}
+
+.sub-bullet {
+    background: #173F35;
+    border-radius: 8px;
+    width: 39px;
+    height: 39px;
+    top: -19px;
+    left: -19px;
+    position: absolute;
+}
+
+.img-bullet {
+    width: 63px;
+    height: 63px;
+    background: rgba(17, 116, 91, 0.28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(3.5px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 8px;
+}
+
+.img-bullet > img {
+    width: 36px;
+}
+
+/* Callback Form */
+
+.callback-form {
+    background: url("../images/Artboard 1 1.png");
+    background-size: 100% 100%;
+}
+
+.callback-form > div {
+    width: 40%;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 1200px) {
+    .callback-form > div {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .callback-form > div {
+        width: 80%;
+    }
+}
+
+.callback-btn {
+    padding-right: 68px;
+    padding-left: 68px;
+}
+
+.callback-row > input {
+    height: 44px;
+}

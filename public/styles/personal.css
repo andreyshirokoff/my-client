@@ -1,0 +1,76 @@
+.left-nav > .nav-links {
+    height: 56px;
+    color: white;
+}
+
+.nav-links > p > a {
+    color: black;
+}
+
+.nav-links.active {
+    background: linear-gradient(89.55deg, #173F35 0.29%, #11745B 96.83%);
+    color: white;
+    border: none;
+}
+
+.nav-links.active > p > a {
+    color: white;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+.img-wrapper.user-img-container > img {
+    max-width: 100px;
+}
+
+.user-img-container {
+    width: 160px;
+    height: 190px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../images/Rectangle 11.png"), #F5FEFF;
+    border: 2px solid #000000;
+    border-radius: 15px;
+}
+
+a#change-pwd-btn {
+    margin-top: 28px;
+    padding: 17px 35px;
+}
+
+.personal-btn {
+    padding: 17px 35px;
+}
+
+input.form-control {
+    height: 70px;
+    font-size: 20px;
+}
+
+.question-box > div > ul > li {
+    line-height: 21px;
+}
+
+.info-box {
+    background: url("../images/Rectangle 11.png"), #F5FEFF;
+    background-size: cover;
+    border: 1px solid black;
+    padding: 70px 20%;
+}
+
+.info-box > ol > li {
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+    .info-box {
+        padding: 50px 5%;
+    }
+
+    .info-box > ol > li {
+        font-size: 16px;
+    }
+}

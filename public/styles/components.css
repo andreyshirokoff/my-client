@@ -1,0 +1,159 @@
+/* Offer section */
+.offer-ctrl-btn {
+    padding: 10px 95px;
+    border: 2px solid black;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.btn-transparent.active {
+    background: linear-gradient(89.55deg, #173F35 0.29%, #11745B 96.83%);
+    color: white;
+    border: none;
+}
+
+@media only screen and (max-width: 1200px) {
+    .offer-ctrl-btn {
+        padding: 10px 50px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .offer-ctrl-btn {
+        padding: 10px 40px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .offer-ctrl-btn {
+        padding: 10px 20px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .offer-ctrl-btn {
+        padding: 10px 40%;
+    }
+}
+/* Service Card section */
+
+.service-card {
+    background: #F7F1FF;
+    border-radius: 10px;
+    max-width: 520px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-card > div > .offer-head {
+    height: 94px;
+    -webkit-border-bottom-right-radius: 94px;
+    -webkit-border-bottom-left-radius: 94px;
+    -moz-border-radius-bottomright: 94px;
+    -moz-border-radius-bottomleft: 94px;
+    border-bottom-right-radius: 94px;
+    border-bottom-left-radius: 94px;
+    background: #2E2E2E;
+}
+
+.discount-box {
+    width: 63px;
+    height: 69px;
+    padding: 6px;
+    top: 0;
+    right: 12%;
+    background: #FFF73C;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.discount-box >p {
+    padding-top: 4px;
+    font-size: 11px;
+    margin-bottom: 5px;
+    line-height: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.discount-box > .sub-discount {
+    font-size: 10px;
+    padding-top: 0;
+    font-weight: normal;
+}
+
+.offer-list {
+    width: fit-content;
+}
+
+.offer-list > div {
+    margin-bottom: 24px;
+}
+
+.offer-list > div > p {
+    margin: 0;
+}
+
+.offer-bullet {
+    width: 24px;
+    height: 24px;
+    background: white;
+}
+
+/* Questions sector */
+.question-box {
+    border-bottom: 2px solid #CFCFCF;
+    padding-top: 16px;
+}
+
+button.btn-dark, a.btn-dark {
+    background: #173F35;
+}
+
+/* Modals */
+div.modal-dialog > div {
+    background: url("../images/Rectangle 11.png") center;
+    background-size: cover;
+    margin: 0 auto;
+    padding: 70px 15%;
+}
+
+.custom-input {
+    height: 70px;
+    font-size: 20px;
+}
+
+@media (min-width: 576px) {
+    div.callback-modal.modal-dialog {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    div.callback-modal.modal-dialog {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    div.callback-modal.modal-dialog {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    div.callback-modal.modal-dialog {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 1400px) {
+    div.callback-modal.modal-dialog {
+        max-width: 1320px;
+    }
+}
