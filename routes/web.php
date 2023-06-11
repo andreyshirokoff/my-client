@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::view('/home', 'home')->middleware('auth');
+Route::view('/profile/edit', 'profile.edit')->middleware('auth');
+Route::view('/profile/password', 'profile.password')->middleware('auth');
+
+
 Route::get('/price-page', function () {
     return view('price-page');
 });
@@ -23,9 +29,9 @@ Route::get('/price-page', function () {
 Route::get('/confirm-reset', function () {
     return view('confirm-reset');
 });
-Route::get('/login', function () {
-    return view('login');
-});
+//Route::get('/login', function () {
+//    return view('login');
+//});
 Route::get('/reset', function () {
     return view('reset');
 });
