@@ -29,15 +29,17 @@ Route::get('/price-page', function () {
 Route::get('/confirm-reset', function () {
     return view('confirm-reset');
 });
-//Route::get('/login', function () {
-//    return view('login');
-//});
+//remove
+Route::get('/login1', function () {
+    return view('login1');
+});
 Route::get('/reset', function () {
     return view('reset');
 });
 Route::get('/reset-code', function () {
     return view('reset-code');
 });
+//remove
 Route::get('/signup', function () {
     return view('signup');
 });

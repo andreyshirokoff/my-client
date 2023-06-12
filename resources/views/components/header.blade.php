@@ -50,15 +50,29 @@
                             <a class="nav-link" href="#">FAQ</a>
                         </li>
 {{--                        remove--}}
-                        <a href="{{url('/user-page')}}">
-                        <li class="d-none d-lg-block nav-item bg-dark text-center rounded-2" style="padding-top: 7px; height: 43px; width: 52px">
-                            <img width="23px" src="{{asset('images/user-regular.png')}}" alt="">
-                        </li>
-                        </a>
+                        @guest
+                            <a href="{{ route('register') }}">
+                            <li class="d-none d-lg-block nav-item bg-dark text-center rounded-2" style="padding-top: 7px; height: 43px; width: 52px">
+                                <img width="23px" src="{{asset('images/user-regular.png')}}" alt="">
+                            </li>
+                            </a>
 
-                        <li class="nav-item">
-                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" class=" py-3 px-3 btn btn-dark rounded-pill">Wypróbuj za 0 zł</a>
-                        </li>
+
+                            <li class="nav-item">
+                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class=" py-3 px-3 btn btn-dark rounded-pill">Wypróbuj za 0 zł</a>
+                            </li>
+                        @else
+                            <a href="{{url('/user-page')}}">
+                                <li class="d-none d-lg-block nav-item bg-dark text-center rounded-2" style="padding-top: 7px; height: 43px; width: 52px">
+                                    <img width="23px" src="{{asset('images/user-regular.png')}}" alt="">
+                                </li>
+                            </a>
+
+
+                            <li class="nav-item">
+                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class=" py-3 px-3 btn btn-dark rounded-pill">Wypróbuj za 0 zł</a>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
             </div>

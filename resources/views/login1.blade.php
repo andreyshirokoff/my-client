@@ -12,22 +12,38 @@
         </div>
         <div class="container">
             <p class="text-end fs-5 pe-2">Czy jesteś już zarejestrowany? <a href="" class="text-dark fw-semibold">Wejść</a></p>
-            <form action="" class="authorization-form">
+            <form class="authorization-form" method="POST" action="{{ route('login') }}">
+                @csrf
                 <div class="inner-container">
                     <p class="text-center fs-2 fw-bold">Wejście</p>
                     <div class="mt-3">
                         <label class="form-label" for="email">Wprowadź swój email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Example@gmail.com">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Example@gmail.com" required autocomplete="email" autofocus>
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="mt-3">
-                        <label class="form-label" for="email">Hasło</label>
-                        <input type="password" class="form-control" name="email" id="email" placeholder="**********">
+                        <label class="form-label" for="password">Hasło</label>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="**********" required autocomplete="current-password">
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-dark w-100 mt-4 py-4 fs-5 rounded-pill">zarejestrować</button>
                 </div>
             </form>
+            @if (Route::has('password.request'))
+                <p class="fs-5 text-center">
+                    Zapomniałeś hasła? <a href="{{ route('password.request') }}" class="fw-bold text-dark">Przywróć</a>
+                </p>
+            @endif
             <p class="fs-5 text-center">
-                Zapomniałeś hasła? <a href="" class="fw-bold text-dark">Przywróć</a>
+                <a href="{{ route('register') }}" class="fw-bold text-dark">Rejestracja</a>
             </p>
         </div>
     </div>
