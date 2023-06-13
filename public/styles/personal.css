@@ -65,6 +65,17 @@ input.form-control {
     font-size: 20px;
 }
 
+.profile-edit-input{
+    display: block;
+    height: 30px;
+}
+.profile-edit-input.hidden{
+    display: none;
+}
+.profile-edit.hidden{
+    display: none;
+}
+
 @media only screen and (max-width: 800px) {
     .info-box {
         padding: 50px 5%;

@@ -27,9 +27,9 @@
                         <label class="form-label" for="tel">Email</label>
                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="example@gmail.com" required autocomplete="email" autofocus>
                         @error('email')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                         @enderror
                     </div>
                     <button type="submit" class="btn btn-dark w-100 mt-4 py-4 fs-5 rounded-pill">Wyślij link do resetowania</button>
