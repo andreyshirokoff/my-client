@@ -5,7 +5,7 @@
 @section('isPersonal')
     <link rel="stylesheet" href="{{asset('styles/personal.css')}}">
 @endsection
-
+@section('content')
     <div class="container-fluid px-0" @guest style="position: relative;z-index: 100;" @else @endguest>
         <div class="container-fluid header-container p-0">
             @include('components/header')
@@ -46,4 +46,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 <script src="{{asset('js/main.js')}}"></script>
 <script src="https://kit.fontawesome.com/b675a8d36a.js" crossorigin="anonymous"></script>
-
+@endsection

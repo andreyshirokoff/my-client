@@ -34,9 +34,9 @@
                 </div>
                 <div>
                     <p class="fs-5 profile-edit">Beauty studio Nefertiti</p>
-                    <input class="form-control profile-edit-input hidden" type="text" value="Beauty studio Nefertiti">
+                    <input class="form-control profile-edit-input hidden" style="margin-bottom:10px" type="text" value="Beauty studio Nefertiti">
                     <p class="fs-5 profile-edit">test. 12, 33-333</p>
-                    <input class="form-control profile-edit-input hidden" type="text" value="test. 12, 33-333">
+                    <input class="form-control profile-edit-input hidden" style="margin-bottom:10px" type="text" value="test. 12, 33-333">
                     <p class="fs-5 profile-edit">2311144411</p>
                     <input class="form-control profile-edit-input hidden" type="text" value="2311144411">
                 </div>

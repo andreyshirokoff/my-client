@@ -66,14 +66,14 @@ input.form-control {
 }
 
 .profile-edit-input{
-    display: block;
-    height: 30px;
+    display: block!important;
+    height: 30px!important;
 }
 .profile-edit-input.hidden{
-    display: none;
+    display: none!important;
 }
 .profile-edit.hidden{
-    display: none;
+    display: none!important;
 }
 
 @media only screen and (max-width: 800px) {
