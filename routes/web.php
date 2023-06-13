@@ -18,8 +18,8 @@ Route::get('/', function () {
 });
 
 Route::view('/home', 'home')->middleware('auth');
-Route::view('/profile/edit', 'profile.edit')->middleware('auth');
-Route::view('/profile/password', 'profile.password')->middleware('auth');
+Route::view('/home/edit', 'profile.edit')->middleware('auth');
+Route::view('/home/password', 'profile.password')->middleware('auth');
 
 
 Route::get('/price-page', function () {
@@ -30,9 +30,9 @@ Route::get('/confirm-reset', function () {
     return view('confirm-reset');
 });
 //remove
-Route::get('/login1', function () {
-    return view('login1');
-});
+//Route::get('/login1', function () {
+//    return view('login1');
+//});
 Route::get('/reset', function () {
     return view('reset');
 });
@@ -40,26 +40,26 @@ Route::get('/reset-code', function () {
     return view('reset-code');
 });
 //remove
-Route::get('/signup', function () {
-    return view('signup');
-});
+//Route::get('/signup', function () {
+//    return view('signup');
+//});
 
 
 
 
 
-Route::get('/user-page', function () {
-    return view('user-page');
-});
-Route::get('/user-page/packet-change', function () {
+//Route::get('/home', function () {
+//    return view('home');
+//});
+Route::get('/home/packet-change', function () {
     return view('packet-change');
-});
-Route::get('/user-page/sms-packets', function () {
+})->middleware('auth');
+Route::get('/home/sms-packets', function () {
     return view('sms-packets');
-});
-Route::get('/user-page/help-page', function () {
+})->middleware('auth');
+Route::get('/home/help-page', function () {
     return view('help-page');
-});
-Route::get('/user-page/info-page', function () {
+})->middleware('auth');
+Route::get('/home/info-page', function () {
     return view('info-page');
-});
+})->middleware('auth');

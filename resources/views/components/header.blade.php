@@ -51,26 +51,37 @@
                         </li>
 {{--                        remove--}}
                         @guest
-                            <a href="{{ route('register') }}">
-                            <li class="d-none d-lg-block nav-item bg-dark text-center rounded-2" style="padding-top: 7px; height: 43px; width: 52px">
+                            <li class="d-none d-lg-block nav-item text-center rounded-2" style="padding-top: 7px; height: 43px; width: 52px;background:#173F35;">
+                            <a href="{{ route('login') }}">
+
                                 <img width="23px" src="{{asset('images/user-regular.png')}}" alt="">
-                            </li>
                             </a>
+                            </li>
+
 
 
                             <li class="nav-item">
                                 <a data-bs-toggle="modal" data-bs-target="#exampleModal" class=" py-3 px-3 btn btn-dark rounded-pill">Wypróbuj za 0 zł</a>
                             </li>
                         @else
-                            <a href="{{url('/user-page')}}">
-                                <li class="d-none d-lg-block nav-item bg-dark text-center rounded-2" style="padding-top: 7px; height: 43px; width: 52px">
-                                    <img width="23px" src="{{asset('images/user-regular.png')}}" alt="">
-                                </li>
+                            <li class="d-none d-lg-block nav-item text-center rounded-2 px-3" style="padding-top: 7px; height: 43px;background:#173F35;">
+                            <a href="{{url('/home')}}" style="color:white;text-decoration:none;" class="d-flex align-items-center">
+
+                                    <img width="23px" src="{{asset('images/user-regular.png')}}" alt=""><span style="margin-left:10px">{{Auth::user()->name}}</span>
+
                             </a>
+                            </li>
 
 
-                            <li class="nav-item">
-                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class=" py-3 px-3 btn btn-dark rounded-pill">Wypróbuj za 0 zł</a>
+                            <li class="nav-item" style="cursor:pointer">
+                                <a href="{{ route('logout') }}" class=" py-3 px-3 " style="text-decoration: none;color:black;" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    <img src="{{asset('images/logout 1.svg')}}" alt="">
+                                    Wyloguj
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </li>
                         @endguest
                     </ul>

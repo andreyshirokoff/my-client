@@ -14,4 +14,15 @@ class Authenticate extends Middleware
     {
         return $request->expectsJson() ? null : route('login');
     }
+
+//    public function handle($request, \Closure $next)
+//    {
+//        if (! $request->user()) {
+//            return redirect()->route('login'); // перенаправляем на страницу входа
+//        }
+//
+//        return $next($request);
+//    }
+
+
 }
