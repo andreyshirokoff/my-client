@@ -13,18 +13,68 @@ document.addEventListener('DOMContentLoaded', function (){
         }
     })
 })
-$('#edit-profile-edit').click(() => {
-    let parent = $('#edit-profile-edit').closest('.fs-4')
-    let clone = $('#edit-profile-edit').clone()
-    $('#edit-profile-edit').remove()
-    $('span', parent).after('<button type="button" class="btn btn-dark py-1" style="font-size:12px;">save</button>');
 
-    $('.profile-edit').each((pk, p) => {
-        $(p).addClass('hidden')
-    })
-    $('.profile-edit-input').each((i, input) => {
-        $(input).removeClass('hidden')
-    })
+let parent, clone
+if($('#home-place').length > 0)
+{
+    parent = $('#edit-profile-edit').closest('.fs-4')
+    clone = $('#edit-profile-edit').clone()
+}
+$('#home-place').click(async(e) => {
 
+    if($(e.target).is('#edit-profile-edit'))
+    {
+
+        $('#edit-profile-edit').remove()
+        $('span', parent).after('<button type="button" class="btn btn-dark py-1" id="save-profile-edit" style="font-size:12px;">save</button>');
+
+        $('.profile-edit').each((pk, p) => {
+            $(p).addClass('hidden')
+        })
+        $('.profile-edit-input').each((i, input) => {
+            $(input).removeClass('hidden')
+        })
+
+
+    }
+    if($(e.target).is('#save-profile-edit'))
+    {
+        let url = $('.profile-edit-form').attr('data-action')
+
+        let dataFilter = new FormData();
+        dataFilter.append('_token', $('.profile-edit-form').attr('data-token'))
+        dataFilter.append('user_id', $('.profile-edit-form').attr('data-user'))
+        dataFilter.append('title', $('#profile-edit-title').val())
+        dataFilter.append('address', $('#profile-edit-address').val())
+        dataFilter.append('nip', $('#profile-edit-nip').val())
+
+        const request = await fetch(url, {
+            method: 'POST',
+            body: dataFilter
+        })
+        const result = await request.text()
+        if(result.includes('SUCCESS'))
+        {
+
+            $('#profile-edit-title-p').html($('#profile-edit-title').val())
+            $('#profile-edit-address-p').html($('#profile-edit-address').val())
+            $('#profile-edit-nip-p').html($('#profile-edit-nip').val())
+            $('.profile-edit').each((pk, p) => {
+                $(p).removeClass('hidden')
+            })
+            $('.profile-edit-input').each((i, input) => {
+                $(input).addClass('hidden')
+            })
+
+            $('#save-profile-edit').remove()
+
+            $('span', parent).after(clone);
+        }
+    }
 
 })
+
+
+
+
+

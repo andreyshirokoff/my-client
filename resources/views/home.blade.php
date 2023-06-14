@@ -25,20 +25,21 @@
             </div>
             <p class="fs-4 fw-semibold mb-1">Email</p>
             <p class="fs-5">{{ Auth::user()->email }}</p>
-            <p class="fs-4 fw-semibold" style="display:flex;gap:20px;align-items: center"><span>Dane do faktur:</span><i style="font-size: 14px;cursor: pointer" id="edit-profile-edit" class="fa-sharp fa-solid fa-pencil"></i></p>
+            <p class="fs-4 fw-semibold" style="display:flex;gap:20px;align-items: center" id="home-place"><span>Dane do faktur:</span><i style="font-size: 14px;cursor: pointer" id="edit-profile-edit" class="fa-sharp fa-solid fa-pencil"></i></p>
             <div class="d-flex column-gap-5">
                 <div>
                     <p class="fs-5 fw-semibold">Tytuł:</p>
                     <p class="fs-5 fw-semibold">Аdres:</p>
                     <p class="fs-5 fw-semibold">NIP:</p>
                 </div>
-                <div>
-                    <p class="fs-5 profile-edit">Beauty studio Nefertiti</p>
-                    <input class="form-control profile-edit-input hidden" style="margin-bottom:10px" type="text" value="Beauty studio Nefertiti">
-                    <p class="fs-5 profile-edit">test. 12, 33-333</p>
-                    <input class="form-control profile-edit-input hidden" style="margin-bottom:10px" type="text" value="test. 12, 33-333">
-                    <p class="fs-5 profile-edit">2311144411</p>
-                    <input class="form-control profile-edit-input hidden" type="text" value="2311144411">
+                <div data-user="{{Auth::user()->id}}" data-action="{{route('add.req')}}" data-token="{{csrf_token()}}" class="profile-edit-form">
+
+                    <p class="fs-5 profile-edit" id="profile-edit-title-p">{{$userRequisite->title}}</p>
+                    <input class="form-control profile-edit-input hidden" id="profile-edit-title" style="margin-bottom:10px" type="text" value="{{$userRequisite->title}}">
+                    <p class="fs-5 profile-edit" id="profile-edit-address-p">{{$userRequisite->address}}</p>
+                    <input class="form-control profile-edit-input hidden" id="profile-edit-address" style="margin-bottom:10px" type="text" value="{{$userRequisite->address}}">
+                    <p class="fs-5 profile-edit" id="profile-edit-nip-p">{{$userRequisite->nip}}</p>
+                    <input class="form-control profile-edit-input hidden" id="profile-edit-nip" type="text" value="{{$userRequisite->nip}}">
                 </div>
             </div>
             <a href="{{url('/home/password')}}" class="btn btn-dark rounded-pill" id="change-pwd-btn">Zmień hasło</a>

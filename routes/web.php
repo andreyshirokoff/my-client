@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\UserRequisite;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,13 @@ Route::get('/', function () {
 });
 
 Route::view('/home', 'home')->middleware('auth');
+Route::get('/home', function () {
+    $user = Auth::user();
+    $userRequisite = UserRequisite::where('user_id', $user->id)->first();
+    if(!$userRequisite) $userRequisite = json_encode(['title' => '', 'address' => '', 'nip' => '']);
+    return view('home', ['userRequisite' => $userRequisite]);
+})->middleware('auth');
+Route::post('/home/save-requisites', [\App\Http\Controllers\AjaxController::class, 'saveRequisites'])->name('add.req')->middleware('auth');
 Route::view('/home/edit', 'profile.edit')->middleware('auth');
 Route::view('/home/password', 'profile.password')->middleware('auth');
 
