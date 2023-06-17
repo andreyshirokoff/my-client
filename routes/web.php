@@ -22,7 +22,6 @@ Route::view('/home', 'home')->middleware('auth');
 Route::get('/home', function () {
     $user = Auth::user();
     $userRequisite = UserRequisite::where('user_id', $user->id)->first();
-    if(!$userRequisite) $userRequisite = json_encode(['title' => '', 'address' => '', 'nip' => '']);
     return view('home', ['userRequisite' => $userRequisite]);
 })->middleware('auth');
 Route::post('/home/save-requisites', [\App\Http\Controllers\AjaxController::class, 'saveRequisites'])->name('add.req')->middleware('auth');
@@ -71,3 +70,13 @@ Route::get('/home/help-page', function () {
 Route::get('/home/info-page', function () {
     return view('info-page');
 })->middleware('auth');
+
+
+
+//Route::get('/nova', function(){
+//    return view('nova.path');
+//})->middleware(['auth', 'role:admin'])->name('nova.path');
+
+
+
+

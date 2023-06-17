@@ -2,11 +2,16 @@
 
 namespace App\Nova;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
+
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\Stack;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -58,6 +63,21 @@ class User extends Resource
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
+//            Text::make('Role', 'role_id', 'App\Models\Role')
+//                ->sortable()
+//                ->rules('required', 'max:255'),
+
+//            BelongsTo::make('Role')->default($request->user()->getKey()),
+
+            BelongsTo::make('Role')
+                ->sortable()
+                ->displayUsing(function($role){
+                    return $role->name;
+                }),
+
+//            BelongsTo::make(__('Books'), 'name', Role::class),
+//            HasOne::make('Role'),
+
             Password::make('Password')
                 ->onlyOnForms()
                 ->creationRules('required', Rules\Password::defaults())
@@ -108,4 +128,8 @@ class User extends Resource
     {
         return [];
     }
+
+
+
+
 }

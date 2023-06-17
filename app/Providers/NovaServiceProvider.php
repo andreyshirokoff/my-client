@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\Nova\Permission;
+use App\Nova\User;
+use App\Nova\Role;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Route;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
@@ -31,6 +35,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ->register();
     }
 
+//    public function isAdmin(User $user)
+//    {
+//        return $user->role_id == 1 ? true : false;
+//    }
+
     /**
      * Register the Nova gate.
      *
@@ -41,8 +50,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function gate()
     {
         Gate::define('viewNova', function ($user) {
-            return in_array($user->email, [
-                'holart@gmail.com',
+            return in_array($user->role_id, [
+                1,
             ]);
         });
     }
@@ -66,7 +75,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [];
+        return [
+//            new Role,
+//            new Permission,
+        ];
     }
 
     /**

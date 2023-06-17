@@ -34,12 +34,12 @@
                 </div>
                 <div data-user="{{Auth::user()->id}}" data-action="{{route('add.req')}}" data-token="{{csrf_token()}}" class="profile-edit-form">
 
-                    <p class="fs-5 profile-edit" id="profile-edit-title-p">{{$userRequisite->title}}</p>
-                    <input class="form-control profile-edit-input hidden" id="profile-edit-title" style="margin-bottom:10px" type="text" value="{{$userRequisite->title}}">
-                    <p class="fs-5 profile-edit" id="profile-edit-address-p">{{$userRequisite->address}}</p>
-                    <input class="form-control profile-edit-input hidden" id="profile-edit-address" style="margin-bottom:10px" type="text" value="{{$userRequisite->address}}">
-                    <p class="fs-5 profile-edit" id="profile-edit-nip-p">{{$userRequisite->nip}}</p>
-                    <input class="form-control profile-edit-input hidden" id="profile-edit-nip" type="text" value="{{$userRequisite->nip}}">
+                    <p class="fs-5 profile-edit" id="profile-edit-title-p">@if($userRequisite){{$userRequisite->title}}@else @endif</p>
+                    <input class="form-control profile-edit-input hidden" id="profile-edit-title" style="margin-bottom:10px" type="text" value="@if($userRequisite){{$userRequisite->title}}@else @endif">
+                    <p class="fs-5 profile-edit" id="profile-edit-address-p">@if($userRequisite){{$userRequisite->address}}@else @endif</p>
+                    <input class="form-control profile-edit-input hidden" id="profile-edit-address" style="margin-bottom:10px" type="text" value="@if($userRequisite){{$userRequisite->address}}@else @endif">
+                    <p class="fs-5 profile-edit" id="profile-edit-nip-p">@if($userRequisite){{$userRequisite->nip}}@else @endif</p>
+                    <input class="form-control profile-edit-input hidden" id="profile-edit-nip" type="text" value="@if($userRequisite){{$userRequisite->nip}}@else @endif">
                 </div>
             </div>
             <a href="{{url('/home/password')}}" class="btn btn-dark rounded-pill" id="change-pwd-btn">Zmień hasło</a>
