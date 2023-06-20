@@ -35,7 +35,8 @@
                 </div>
             </div>
         </div>
-        <div class="container mt-5">
+        <div class="container mt-5" style="position:relative">
+            <i id="o-aplikacji" class="anchor"></i>
             <p class="fs-2 text-center fw-bold">Uporządkuj swoje dane biznesowe</p>
             <div class="mt-5">
                 <div class="d-flex justify-content-between flex-column flex-sm-row row-gap-4">
@@ -94,7 +95,8 @@
                 </div>
             </div>
         </div>
-        <div class="container mt-5">
+        <div class="container mt-5" style="position:relative">
+            <i id="pierwsze-kroki" class="anchor"></i>
             <div class="row">
                 <div class="col-12 col-lg-6 align-items-center d-flex justify-content-center">
                     <div class="position-relative p-0">
@@ -144,8 +146,9 @@
                 </div>
             </div>
         </div>
-        <div class="container mt-5 mb-5">
-            <p class="text-center fs-1 fw-bold">Nasi partnerzy</p>
+        <div class="container mt-5 mb-5" style="position:relative">
+            <i id="dlaczego-warto" class="anchor"></i>
+            <p class="text-center fs-1 fw-bold">Dlaczego warto?</p>
             <p class="fs-5 text-center">MyClient to połączenie wielu firm, które dołożyły starań by zapewnić naszej aplikacji jak
                 najlepszy start. Poprzez wsparcie technologiczne, marketingowe lub doradztwo.</p>
             <section class="splide" id="slider" aria-labelledby="carousel-heading">
@@ -396,7 +399,8 @@
             </form>
         </div>
     </div>
-    <div class="container mt-5 pb-5">
+    <div class="container mt-5 pb-5" style="position:relative">
+        <i id="faq" class="anchor"></i>
         <p class="fs-2 text-center fw-bold">Chcesz nas o coś zapytać?</p>
         <div>
             <div class="d-flex column-gap-4 align-items-center question-box">

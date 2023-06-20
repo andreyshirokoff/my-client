@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Tariff;
 use App\Models\UserRequisite;
 use Illuminate\Support\Facades\Route;
 
@@ -22,7 +23,12 @@ Route::view('/home', 'home')->middleware('auth');
 Route::get('/home', function () {
     $user = Auth::user();
     $userRequisite = UserRequisite::where('user_id', $user->id)->first();
-    return view('home', ['userRequisite' => $userRequisite]);
+
+    $phone = preg_replace('/[^0-9+]/', '', $user->phone);
+    $phone = str_replace(['+', ' ', '-'], '+', $phone);
+    $phone = '+' . substr($phone, 1, 3) . ' ' . substr($phone, 4, 3) . ' ' . substr($phone, 7, 2) . ' ' . substr($phone, 9);
+
+    return view('home', ['userRequisite' => $userRequisite, 'phone' => $phone]);
 })->middleware('auth');
 Route::post('/home/save-requisites', [\App\Http\Controllers\AjaxController::class, 'saveRequisites'])->name('add.req')->middleware('auth');
 Route::view('/home/edit', 'profile.edit')->middleware('auth');

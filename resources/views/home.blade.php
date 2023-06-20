@@ -20,7 +20,7 @@
                 </div>
                 <div>
                     <p class="fs-4 fw-semibold mb-1">Telefon</p>
-                    <p class="fs-5">{{ Auth::user()->phone }}</p>
+                    <p class="fs-5">{{ $phone }}</p>
                 </div>
             </div>
             <p class="fs-4 fw-semibold mb-1">Email</p>

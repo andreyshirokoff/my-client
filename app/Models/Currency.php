@@ -5,16 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TariffAnnotation extends Model
+class Currency extends Model
 {
-    protected $table = 'tariff_annotations';
-
     use HasFactory;
     public $timestamps = false;
 
     protected $fillable = [
         'id',
-        'title',
-        'text'
+        'name',
+        'symbol',
+        'name_min',
+        'symbol_min'
     ];
+
+//    public static function uriKey()
+//    {
+//        return 'roles';
+//    }
 }

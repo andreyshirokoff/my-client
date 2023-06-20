@@ -18,6 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('tariff_id')->nullable(false);
             $table->foreign('tariff_id')->references('id')->on('tariffs');
             $table->timestamps();
+            $table->dateTime('date_start');
+            $table->dateTime('date_end');
+            $table->boolean('is_active');
         });
     }
 

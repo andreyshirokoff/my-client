@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('tariffs', function (Blueprint $table) {
-            $table->unsignedBigInteger('annotation_id')->after('trial');
-            $table->foreign('annotation_id')->references('id')->on('tariff_annotation');
+            $table->unsignedBigInteger('tariff_annotation_id')->nullable()->after('trial');
+            $table->foreign('tariff_annotation_id')->references('id')->on('tariff_annotations');
         });
     }
 

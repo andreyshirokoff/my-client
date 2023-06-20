@@ -2,34 +2,29 @@
 
 namespace App\Nova;
 
-use App\Models\Role;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
-
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\HasOne;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Password;
-use Laravel\Nova\Fields\Stack;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class User extends Resource
+class Tariff extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\User>
+     * @var class-string<\App\Models\Tariff>
      */
-    public static $model = \App\Models\User::class;
+    public static $model = \App\Models\Tariff::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -37,7 +32,7 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email',
+        'id',
     ];
 
     /**
@@ -50,29 +45,18 @@ class User extends Resource
     {
         return [
             ID::make()->sortable(),
-
-            Gravatar::make()->maxWidth(50),
-
-            Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
-
-            BelongsTo::make('Role')
-                ->sortable()
-                ->displayUsing(function($role){
-                    return $role->name;
+            Text::make('Tytuł', 'title')->sortable(),
+            Number::make('Cena', 'price')->sortable(),
+            Text::make('Ogłaszać', 'announce')->sortable(),
+            Text::make('Tekst szczegółowy', 'detail_text')->sortable(),
+            Number::make('Ilość dni próbnych', 'trial')->sortable(),
+            BelongsTo::make('TariffAnnotation')->sortable()
+                ->nullable()
+                ->displayUsing(function($tariffAnnotation){
+                    return $tariffAnnotation->text;
                 }),
-
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', Rules\Password::defaults())
-                ->updateRules('nullable', Rules\Password::defaults()),
+            Boolean::make('Czy ten produkt jest próbny?', 'is_test')->sortable(),
+            Boolean::make('Czy ten produkt jest aktywny?', 'is_actual')->sortable(),
         ];
     }
 
@@ -119,8 +103,4 @@ class User extends Resource
     {
         return [];
     }
-
-
-
-
 }

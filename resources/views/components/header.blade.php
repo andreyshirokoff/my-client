@@ -32,22 +32,19 @@
                 <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 row-gap-2 column-gap-lg-1 column-gap-xxl-3 align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{url('/')}}">O aplikacji</a>
+                            <a class="nav-link active" aria-current="page" href="{{url('/#o-aplikacji')}}">O aplikacji</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Dlaczego warto?</a>
+                            <a class="nav-link" href="{{url('/#dlaczego-warto')}}">Dlaczego warto?</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/price-page')}}">Cennik</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pierwsze kroki</a>
+                            <a class="nav-link" href="{{url('/#pierwsze-kroki')}}">Pierwsze kroki</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pierwsze kroki</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">FAQ</a>
+                            <a class="nav-link" href="{{url('/#faq')}}">FAQ</a>
                         </li>
 {{--                        remove--}}
                         @guest
