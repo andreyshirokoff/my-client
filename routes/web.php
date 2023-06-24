@@ -18,7 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-
+//Route::get('/test', function (){
+//    $user = Auth::user();
+//    \App\Http\Controllers\HomeController::getHistory($user->id);
+//});
+Route::post('/quest-send', [\App\Http\Controllers\AjaxController::class, 'questSend'])->name('quest.send');
 Route::view('/home', 'home')->middleware('auth');
 Route::get('/home', function () {
     $user = Auth::user();
@@ -28,9 +32,15 @@ Route::get('/home', function () {
     $phone = str_replace(['+', ' ', '-'], '+', $phone);
     $phone = '+' . substr($phone, 1, 3) . ' ' . substr($phone, 4, 3) . ' ' . substr($phone, 7, 2) . ' ' . substr($phone, 9);
 
+
+
     return view('home', ['userRequisite' => $userRequisite, 'phone' => $phone]);
 })->middleware('auth');
 Route::post('/home/save-requisites', [\App\Http\Controllers\AjaxController::class, 'saveRequisites'])->name('add.req')->middleware('auth');
+Route::post('/home/try-tariff', [\App\Http\Controllers\AjaxController::class, 'tryTariff'])->name('try.tariff')->middleware('auth');
+Route::post('/home/try-packet', [\App\Http\Controllers\AjaxController::class, 'tryPacket'])->name('try.packet')->middleware('auth');
+Route::post('/home/tech-send', [\App\Http\Controllers\AjaxController::class, 'techSend'])->name('tech.send')->middleware('auth');
+Route::post('/home/phone-verify', [\App\Http\Controllers\AjaxController::class, 'phoneVerify'])->name('phone.verify')->middleware('auth');
 Route::view('/home/edit', 'profile.edit')->middleware('auth');
 Route::view('/home/password', 'profile.password')->middleware('auth');
 

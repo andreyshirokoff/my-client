@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'f9e64f250572aa18819fb9c16b58e56ada1f0543',
+        'reference' => '3b4179f36f8da461b9ef12b25b0b23430f290b20',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -35,7 +35,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../brick/money',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'cordoval/hamcrest-php' => array(
             'dev_requirement' => true,
@@ -74,7 +74,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/cache',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'doctrine/dbal' => array(
             'pretty_version' => '3.6.2',
@@ -83,7 +83,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/dbal',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'doctrine/deprecations' => array(
             'pretty_version' => 'v1.0.0',
@@ -92,7 +92,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/deprecations',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'doctrine/event-manager' => array(
             'pretty_version' => '2.0.0',
@@ -101,7 +101,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/event-manager',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'doctrine/inflector' => array(
             'pretty_version' => '2.0.6',
@@ -425,7 +425,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../inertiajs/inertia-laravel',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'kodova/hamcrest-php' => array(
             'dev_requirement' => true,
@@ -454,7 +454,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'f9e64f250572aa18819fb9c16b58e56ada1f0543',
+            'reference' => '3b4179f36f8da461b9ef12b25b0b23430f290b20',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -467,7 +467,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/nova',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'laravel/pint' => array(
             'pretty_version' => 'v1.10.0',
@@ -521,7 +521,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/ui',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'league/commonmark' => array(
             'pretty_version' => '2.4.0',
@@ -653,7 +653,25 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../openspout/openspout',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
+        ),
+        'outl1ne/nova-simple-repeatable' => array(
+            'pretty_version' => '2.1.0',
+            'version' => '2.1.0.0',
+            'reference' => 'eca3dcb283c876247a26b0a0dd15a6f99e340dc8',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../outl1ne/nova-simple-repeatable',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'outl1ne/nova-translations-loader' => array(
+            'pretty_version' => '5.0.1',
+            'version' => '5.0.1.0',
+            'reference' => 'c547009e8b3fd28d4cd2c034b6ac745785ddeca6',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../outl1ne/nova-translations-loader',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'paragonie/constant_time_encoding' => array(
             'pretty_version' => 'v2.6.3',
@@ -761,7 +779,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../psr/cache',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'psr/container' => array(
             'pretty_version' => '2.0.2',
@@ -912,7 +930,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../rap2hpoutre/fast-excel',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'rhumsaa/uuid' => array(
             'dev_requirement' => false,
@@ -1107,7 +1125,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../spatie/once',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'symfony/console' => array(
             'pretty_version' => 'v6.2.10',
@@ -1239,7 +1257,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-intl-icu',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'symfony/polyfill-intl-idn' => array(
             'pretty_version' => 'v1.27.0',

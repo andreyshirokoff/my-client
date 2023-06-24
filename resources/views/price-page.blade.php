@@ -25,7 +25,7 @@
         <div class="mt-5 mb-5">
             <div class="d-flex justify-content-between flex-column flex-sm-row row-gap-4">
                 @php $i = 0 @endphp
-                @foreach($tariffs->all() as $tariff)
+                @foreach(\App\Models\Tariff::getArray() as $tariff)
                     @if(isset($_GET['id']))
                         @if($_GET['id'] == strtolower($tariff->title))
                             @php $isActive = 'active' @endphp
@@ -54,7 +54,7 @@
 {{--                </button>--}}
             </div>
             @php $i = 0 @endphp
-            @foreach($tariffs->all() as $tariff)
+            @foreach(\App\Models\Tariff::getArray() as $tariff)
                 @if(isset($_GET['id']))
                     @if($_GET['id'] == strtolower($tariff->title))
                         @php $class = 'd-flex' @endphp
@@ -68,7 +68,7 @@
                         @php $class = 'd-none' @endphp
                     @endif
                 @endif
-                <div id="{{strtolower($tariff->title)}}" class="{{$class}} mt-5 hide-offer rounded-3 align-items-center column-gap-3">
+                <div id="{{strtolower($tariff->title)}}" class="{{$class}} mt-5 hide-offer rounded-3 align-items-center column-gap-3 tariff-block" data-id="{{$tariff->id}}">
                     <div class="col-12 col-lg-5">
                         <p>Cennik</p>
                         <p class="fs-2 fw-bold">Taryfa {{$tariff->title}}</p>
@@ -110,7 +110,17 @@
                                 </div>
                                 <div>
                                     <div class="d-flex justify-content-center flex-column flex-md-row row-gap-2 column-gap-2 mt-4 px-5">
-                                        <a class="btn btn-dark rounded-pill py-2 px-4">Wypróbuj </a>
+                                        @if(Auth::user())
+                                            @if(\App\Models\UserTariff::where('user_id', Auth::user()->id)->first())
+
+                                                <a class="btn btn-secondary rounded-pill py-2 px-4" style="cursor:none;pointer-events: none;">Niedostępne</a>
+                                            @else
+                                                <a data-action="{{route('try.tariff')}}" class="btn btn-dark try-tariff rounded-pill py-2 px-4" data-token="{{csrf_token()}}">Wypróbuj</a>
+                                            @endif
+                                        @else
+                                            <a class="btn btn-dark rounded-pill py-2 px-4" href="{{url('/login')}}">Wypróbuj </a>
+                                        @endif
+
                                         <a class="btn btn-transparent border border-dark border-2 rounded-pill py-2 px-4">więcej</a>
                                     </div>
                                     <p class="fw-semibold text-center mt-3 mb-0">{{$tariff->trial}} dni za darmo!</p>
@@ -129,35 +139,54 @@
                                 <p class="fs-1 fw-semibold text-center mb-1">{{$tariff->price}} zł</p>
                                 <p class="text-center">NETTO MIESIĘCZNIE</p>
                                 <div class="mx-auto offer-list">
-                                    <div class="d-flex column-gap-2 align-items-center">
-                                        <div class="rounded-circle offer-bullet text-center">
-                                            <img src="images/Vector%203.png" alt="">
-                                        </div>
-                                        <p class="fs-5 fw-semibold">Do 5 pracowników</p>
-                                    </div>
-                                    <div class="d-flex column-gap-2 align-items-center">
-                                        <div class="rounded-circle offer-bullet text-center">
-                                            <img src="images/Vector%203.png" alt="">
-                                        </div>
-                                        <p class="fs-5 fw-semibold">Bez zobowiązań</p>
-                                    </div>
-                                    <div class="d-flex column-gap-2 align-items-center">
-                                        <div class="rounded-circle offer-bullet text-center">
-                                            <img src="images/Vector%203.png" alt="">
-                                        </div>
-                                        <p class="fs-5 fw-semibold">Bezpłatna pomoc techniczna</p>
-                                    </div>
-                                    <div class="d-flex column-gap-2 align-items-center">
-                                        <div class="rounded-circle offer-bullet text-center">
-                                            <img src="images/Vector%203.png" alt="">
-                                        </div>
-                                        <p class="fs-5 fw-semibold">Pełna funkcjonalność aplikacji</p>
-                                    </div>
+                                    @if(strlen($tariff->list) > 0)
+                                        @foreach(\App\Models\Tariff::getListList($tariff->id) as $li)
+                                            <div class="d-flex column-gap-2 align-items-center">
+                                                <div class="rounded-circle offer-bullet text-center">
+                                                    <img src="{{ asset('images/Vector%203.png') }}" alt="">
+                                                </div>
+                                                <p class="fs-5 fw-semibold">{{$li['text']}}</p>
+                                            </div>
+                                        @endforeach
+                                    @endif
+{{--                                    <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                        <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                            <img src="images/Vector%203.png" alt="">--}}
+{{--                                        </div>--}}
+{{--                                        <p class="fs-5 fw-semibold">Do 5 pracowników</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                        <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                            <img src="images/Vector%203.png" alt="">--}}
+{{--                                        </div>--}}
+{{--                                        <p class="fs-5 fw-semibold">Bez zobowiązań</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                        <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                            <img src="images/Vector%203.png" alt="">--}}
+{{--                                        </div>--}}
+{{--                                        <p class="fs-5 fw-semibold">Bezpłatna pomoc techniczna</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                        <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                            <img src="images/Vector%203.png" alt="">--}}
+{{--                                        </div>--}}
+{{--                                        <p class="fs-5 fw-semibold">Pełna funkcjonalność aplikacji</p>--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
                             <div>
                                 <div class="d-flex justify-content-center flex-column flex-md-row row-gap-2 column-gap-2 mt-4 px-5">
-                                    <a class="btn btn-dark rounded-pill py-2 px-4">Wypróbuj </a>
+                                    @if(Auth::user())
+                                        @if(\App\Models\UserTariff::where('user_id', Auth::user()->id)->first())
+
+                                            <a class="btn btn-secondary rounded-pill py-2 px-4" style="cursor:none;pointer-events: none;">Niedostępne</a>
+                                        @else
+                                            <a data-action="{{route('try.tariff')}}" class="btn btn-dark try-tariff rounded-pill py-2 px-4" data-token="{{csrf_token()}}">Wypróbuj</a>
+                                        @endif
+                                    @else
+                                        <a class="btn btn-dark rounded-pill py-2 px-4" href="{{url('/login')}}">Wypróbuj </a>
+                                    @endif
                                 </div>
                                 <p class="fw-semibold text-center mt-3 mb-0">{{$tariff->trial}} dni za darmo!</p>
                             </div>

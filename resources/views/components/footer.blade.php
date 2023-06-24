@@ -3,7 +3,7 @@
     <div class="container">
         <div class="d-flex flex-column flex-md-row justify-content-center column-gap-5">
             <div class="col-12 col-md-5">
-                <p class="text-white logo-text fw-bold">MyClient</p>
+                <p class="text-white logo-text fw-bold"><img style="height: 40px;margin-right: 30px;transform: translateY(-5px)" src="{{asset('images/logo_my 1.svg')}}" alt=""> MyClient</p>
                 <p class="text-white">KRS 0000944954, NIP 5361959287, REGON 52096244600000
                     ul. WOLSKA 36
                     05-119 STANISŁAWÓW DRUGI</p>

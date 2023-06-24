@@ -19,19 +19,20 @@
             @include('components/header')
         </div>
         <div class="container mb-5">
-            <form action="" class="authorization-form">
+            <form action="" class="authorization-form" data-action="{{route('phone.verify')}}" data-token="{{csrf_token()}}">
                 <div class="inner-container">
                     <p class="text-start fs-2 fw-bold">Wprowadź kod autoryzacji</p>
                     <div class="mt-3">
                         <label class="form-label" for="code0">Wpisz kod z SMS-a</label>
                         <div class="custom-num-input d-flex column-gap-2 mt-3">
-                            <input required type="number" class="border border-bottom border-0" name="code[]" id="code0" min="0" max="9">
-                            <input required type="number" class="border border-bottom border-0" name="code[]" id="code1" min="0" max="9">
-                            <input required type="number" class="border border-bottom border-0" name="code[]" id="code2" min="0" max="9">
-                            <input required type="number" class="border border-bottom border-0" name="code[]" id="code3" min="0" max="9">
+                            <input required type="number" class="border border-bottom border-0" name="code0" id="code0" min="0" max="9">
+                            <input required type="number" class="border border-bottom border-0" name="code1" id="code1" min="0" max="9">
+                            <input required type="number" class="border border-bottom border-0" name="code2" id="code2" min="0" max="9">
+                            <input required type="number" class="border border-bottom border-0" name="code3" id="code3" min="0" max="9">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-dark w-100 mt-4 py-4 fs-5 rounded-pill">Wysłać</button>
+                    <button type="button" class="btn btn-dark w-100 mt-5 py-4 fs-5 rounded-pill" id="submit-sms-code">Wysłać</button>
+                    <p class="text-center mt-4 text-decoration-underline" style="color:blue;cursor:pointer;" id="send-sms-code">Aby otrzymać kod</p>
                 </div>
             </form>
         </div>
@@ -51,4 +52,5 @@
             })
         })
     </script>
+    <script src="{{asset('js/main.js')}}"></script>
 @endsection

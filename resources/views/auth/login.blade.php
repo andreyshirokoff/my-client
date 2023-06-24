@@ -34,7 +34,7 @@
                         </span>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-dark w-100 mt-4 py-4 fs-5 rounded-pill">zarejestrować</button>
+                    <button type="submit" class="btn btn-dark w-100 mt-4 py-4 fs-5 rounded-pill">Wejść</button>
                 </div>
             </form>
             @if (Route::has('password.request'))

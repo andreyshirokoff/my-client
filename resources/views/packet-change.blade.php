@@ -13,18 +13,18 @@
     <p class="fs-5">Przy zmianie pakietu aktualne dni zostaną przeliczone według stawki miesięcznej (do
         wyższego lub niższego)</p>
     <div class="row row-gap-4 mt-4">
-        @foreach($tariffs->all() as $tariff)
+        @foreach(\App\Models\Tariff::getArray() as $tariff)
             @if($tariff->is_actual == 1)
-                <div class="col-12 col-xl-6">
+                <div class="col-12 col-xl-6 tariff-block" data-id="{{$tariff->id}}">
                     <div class="service-card pb-3">
                         <div>
-                            @if($tariff->annotation_id != null)
+                            @if($tariff->tariff_annotation_id != null)
                                 <div class="offer-head position-relative">
-                                    <p class="fs-1 text-white fw-bold text-center mb-1">Medium</p>
-                                    <p class="text-white text-center">{{\App\Models\Tariff::getAnnotation($tariff->annotation_id)->title}}</p>
+                                    <p class="fs-1 text-white fw-bold text-center mb-1">{{$tariff->title}}</p>
+                                    <p class="text-white text-center">{{$tariff->announce}}</p>
                                     <div class="position-absolute discount-box">
-                                        <p>UDERZYĆ!</p>
-                                        <p class="sub-discount">{{\App\Models\Tariff::getAnnotation($tariff->annotation_id)->text}}</p>
+                                        <p>{{\App\Models\Tariff::getAnnotation($tariff->tariff_annotation_id)->title}}!</p>
+                                        <p class="sub-discount">{{\App\Models\Tariff::getAnnotation($tariff->tariff_annotation_id)->text}}</p>
                                     </div>
                                 </div>
                             @else
@@ -36,35 +36,50 @@
                             <p class="fs-1 fw-semibold text-center mb-1">{{$tariff->price}} zł</p>
                             <p class="text-center">NETTO MIESIĘCZNIE</p>
                             <div class="mx-auto offer-list">
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">1 pracownik</p>
-                                </div>
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Bez zobowiązań</p>
-                                </div>
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Bezpłatna pomoc techniczna</p>
-                                </div>
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Pełna funkcjonalność aplikacji</p>
-                                </div>
+                                @if(strlen($tariff->list) > 0)
+                                    @foreach(\App\Models\Tariff::getListList($tariff->id) as $li)
+                                        <div class="d-flex column-gap-2 align-items-center">
+                                            <div class="rounded-circle offer-bullet text-center">
+                                                <img src="{{ asset('images/Vector%203.png') }}" alt="">
+                                            </div>
+                                            <p class="fs-5 fw-semibold">{{$li['text']}}</p>
+                                        </div>
+                                    @endforeach
+                                @endif
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">1 pracownik</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Bez zobowiązań</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Bezpłatna pomoc techniczna</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Pełna funkcjonalność aplikacji</p>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                         <div>
                             <div class="d-flex justify-content-center flex-column flex-md-row row-gap-2 column-gap-2 mt-4 px-5">
-                                <a class="btn btn-dark rounded-pill py-2 px-4">Wypróbuj </a>
+                                @if(\App\Models\UserTariff::where('user_id', Auth::user()->id)->first())
+
+                                    <a class="btn btn-secondary rounded-pill py-2 px-4" style="cursor:none;pointer-events: none;">Niedostępne</a>
+                                @else
+                                    <a data-action="{{route('try.tariff')}}" class="btn btn-dark try-tariff rounded-pill py-2 px-4" data-token="{{csrf_token()}}">Wypróbuj</a>
+                                @endif
                                 <a href="{{url('/price-page')}}?id={{strtolower($tariff->title)}}" class="btn btn-transparent border border-dark border-2 rounded-pill py-2 px-4">więcej</a>
                             </div>
                             <p class="fw-semibold text-center mt-3 mb-0">{{$tariff->trial}} dni za darmo!</p>

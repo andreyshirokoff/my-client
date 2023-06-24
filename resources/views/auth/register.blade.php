@@ -1,4 +1,4 @@
-@extends('layout')
+    @extends('layout')
 @section('title')
     Czy jesteś już zarejestrowany?
 @endsection

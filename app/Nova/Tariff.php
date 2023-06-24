@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Outl1ne\NovaSimpleRepeatable\SimpleRepeatable;
 
 class Tariff extends Resource
 {
@@ -55,6 +56,9 @@ class Tariff extends Resource
                 ->displayUsing(function($tariffAnnotation){
                     return $tariffAnnotation->text;
                 }),
+            SimpleRepeatable::make('Lista', 'list', [
+                Text::make('text'),
+            ]),
             Boolean::make('Czy ten produkt jest próbny?', 'is_test')->sortable(),
             Boolean::make('Czy ten produkt jest aktywny?', 'is_actual')->sortable(),
         ];

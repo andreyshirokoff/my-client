@@ -3,9 +3,13 @@
 namespace App\Providers;
 
 use App\Nova\Dashboards\Main;
+use App\Nova\Packet;
+use App\Nova\Partner;
 use App\Nova\Permission;
+use App\Nova\QuestionSupport;
 use App\Nova\Tariff;
 use App\Nova\TariffAnnotation;
+use App\Nova\TechSupport;
 use App\Nova\User;
 use App\Nova\Role;
 use App\Nova\UserTariff;
@@ -42,10 +46,18 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 MenuSection::make('Produkty', [
                     MenuItem::resource(Tariff::class),
+                    MenuItem::resource(Packet::class),
                 ])->icon('briefcase')->collapsable(),
 
                 MenuSection::make('Ustawienia produktu', [
                     MenuItem::resource(TariffAnnotation::class),
+                ])->icon('clipboard')->collapsable(),
+
+                MenuSection::make('Inny', [
+                    MenuItem::resource(Partner::class),
+                    MenuItem::resource(TechSupport::class),
+                    MenuItem::resource(QuestionSupport::class),
+
                 ])->icon('clipboard')->collapsable(),
 //
 //                MenuSection::make('Программы', [

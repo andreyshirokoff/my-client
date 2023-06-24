@@ -25,7 +25,7 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid justify-content-center column-gap-0 column-gap-xl-5">
-                <a class="navbar-brand logo-text me-5 me-lg-2" href="{{url('/')}}">MyClient</a>
+                <a class="navbar-brand logo-text me-5 me-lg-2" style="line-height: 1;display: flex;height: 50px;" href="{{url('/')}}"><img style="height: 40px;" src="{{asset('images/logo_my.svg')}}" alt=""></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

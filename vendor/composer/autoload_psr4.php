@@ -61,6 +61,8 @@ return array(
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src/PhpOption'),
     'ParagonIE\\ConstantTime\\' => array($vendorDir . '/paragonie/constant_time_encoding/src'),
+    'Outl1ne\\NovaTranslationsLoader\\' => array($vendorDir . '/outl1ne/nova-translations-loader/src'),
+    'Outl1ne\\NovaSimpleRepeatable\\' => array($vendorDir . '/outl1ne/nova-simple-repeatable/src'),
     'OpenSpout\\' => array($vendorDir . '/openspout/openspout/src'),
     'NunoMaduro\\Collision\\' => array($vendorDir . '/nunomaduro/collision/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),

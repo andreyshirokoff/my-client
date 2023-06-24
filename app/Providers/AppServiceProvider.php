@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Tariff;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,6 @@ class AppServiceProvider extends ServiceProvider
         $tariffs = new Tariff();
         \view()->share('tariffs', $tariffs);
 
-
+        Paginator::useBootstrap();
     }
 }

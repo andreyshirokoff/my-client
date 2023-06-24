@@ -33,5 +33,16 @@ class Tariff extends Model
         return $this->belongsTo(TariffAnnotation::class);
     }
 
+    public static function getArray()
+    {
+        $class = new self();
+        return $class->all();
+    }
+
+    public static function getListList($id)
+    {
+        $listEncode = self::where('id', $id)->first()->list;
+        return json_decode($listEncode,1);
+    }
 
 }

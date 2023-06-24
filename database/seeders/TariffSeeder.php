@@ -21,6 +21,7 @@ class TariffSeeder extends Seeder
             'announce' => 'Dla Ciebie',
             'detail_text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet, aperiam asperiores at atque consequatur corporis deleniti dolores dolorum ducimus ea eos error facere id laboriosam laborum magni maiores mollitia natus nisi nostrum provident quae quibusdam quis reiciendis sapiente sed sequi soluta temporibus ullam vel velit vero voluptate! Consequuntur, sunt!',
             'trial' => 30,
+            'list' => '[{"text":"1 pracownik"},{"text":"Bez zobowi\u0105za\u0144"},{"text":"Bezp\u0142atna pomoc techniczna"},{"text":"Pe\u0142na funkcjonalno\u015b\u0107 aplikacji"}]',
         ]);
 
         Tariff::create([
@@ -29,6 +30,7 @@ class TariffSeeder extends Seeder
             'announce' => 'Mały zespół',
             'detail_text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet, aperiam asperiores at atque consequatur corporis deleniti dolores dolorum ducimus ea eos error facere id laboriosam laborum magni maiores mollitia natus nisi nostrum provident quae quibusdam quis reiciendis sapiente sed sequi soluta temporibus ullam vel velit vero voluptate! Consequuntur, sunt!',
             'trial' => 30,
+            'list' => '[{"text":"Do 5 pracownik\u00f3w"},{"text":"Bez zobowi\u0105za\u0144"},{"text":"Bezp\u0142atna pomoc techniczna"},{"text":"Pe\u0142na funkcjonalno\u015b\u0107 aplikacji"}]',
         ]);
 
         Tariff::create([
@@ -38,6 +40,7 @@ class TariffSeeder extends Seeder
             'detail_text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet, aperiam asperiores at atque consequatur corporis deleniti dolores dolorum ducimus ea eos error facere id laboriosam laborum magni maiores mollitia natus nisi nostrum provident quae quibusdam quis reiciendis sapiente sed sequi soluta temporibus ullam vel velit vero voluptate! Consequuntur, sunt!',
             'trial' => 30,
             'annotation_id' => 1,
+            'list' => '[{"text":"Do 10 pracownik\u00f3w"},{"text":"Bez zobowi\u0105za\u0144"},{"text":"Bezp\u0142atna pomoc techniczna"},{"text":"Pe\u0142na funkcjonalno\u015b\u0107 aplikacji"}]',
         ]);
 
         Tariff::create([
@@ -46,6 +49,7 @@ class TariffSeeder extends Seeder
             'announce' => 'No limit',
             'detail_text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet, aperiam asperiores at atque consequatur corporis deleniti dolores dolorum ducimus ea eos error facere id laboriosam laborum magni maiores mollitia natus nisi nostrum provident quae quibusdam quis reiciendis sapiente sed sequi soluta temporibus ullam vel velit vero voluptate! Consequuntur, sunt!',
             'trial' => 30,
+            'list' => '[{"text":"Do 10 pracownik\u00f3w"},{"text":"Bez zobowi\u0105za\u0144"},{"text":"Bezp\u0142atna pomoc techniczna"},{"text":"Pe\u0142na funkcjonalno\u015b\u0107 aplikacji"}]',
         ]);
     }
 }

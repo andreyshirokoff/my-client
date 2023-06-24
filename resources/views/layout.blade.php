@@ -21,5 +21,6 @@
     @yield('isSplide')
 </head>
 <body>
+    <div class="confirm-message"></div>
     @yield('content')
 </body>

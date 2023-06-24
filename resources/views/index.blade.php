@@ -154,17 +154,20 @@
             <section class="splide" id="slider" aria-labelledby="carousel-heading">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        <li class="splide__slide text-center"><img src="{{asset('images/logo2%20(1)%201.png')}}" alt=""></li>
-                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>
-                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>
-                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>
-                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>
-                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>
-                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>
-                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>
-                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>
-                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>
-                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>
+                        @foreach(\App\Models\Partner::getArray() as $partner)
+                            <li class="splide__slide text-center"><img src="{{asset('/storage/'.$partner->image)}}" alt=""></li>
+                        @endforeach
+{{--                        <li class="splide__slide text-center"><img src="{{asset('images/logo2%20(1)%201.png')}}" alt=""></li>--}}
+{{--                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>--}}
+{{--                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>--}}
+{{--                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>--}}
+{{--                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>--}}
+{{--                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>--}}
+{{--                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>--}}
+{{--                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>--}}
+{{--                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>--}}
+{{--                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>--}}
+{{--                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>--}}
                     </ul>
                 </div>
                 <div class="splide__arrows splide__arrows--ltr">
@@ -198,188 +201,261 @@
                 KUP TANIEJ: Przy zakupie pakietu na 3 miesiące otrzymasz -5% rabatu, kup na rok by zyskać aż -10% rabatu! Wybierz pakiet i sprawdź.
             </p>
             <div class="row row-gap-4 mt-4">
-                <div class="col-12 col-md-6 ">
-                    <div class="service-card pb-3">
-                        <div>
-                            <div class="offer-head">
-                                <p class="fs-1 text-white fw-bold text-center mb-1">Solo</p>
-                                <p class="text-white text-center">Dla Ciebie</p>
-                            </div>
-                            <p class="fs-1 fw-semibold text-center mb-1">99 zł</p>
-                            <p class="text-center">NETTO MIESIĘCZNIE</p>
-                            <div class="mx-auto offer-list">
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{asset('images/Vector%203.png')}}" alt="">
+                @foreach(\App\Models\Tariff::getArray() as $tariff)
+                    @if($tariff->is_actual == 1)
+                    <div class="col-12 col-md-6 tariff-block" data-id="{{$tariff->id}}">
+                        <div class="service-card pb-3">
+                            <div>
+                                @if($tariff->tariff_annotation_id != null)
+                                    <div class="offer-head position-relative">
+                                        <p class="fs-1 text-white fw-bold text-center mb-1">{{$tariff->title}}</p>
+                                        <p class="text-white text-center">{{$tariff->announce}}</p>
+                                        <div class="position-absolute discount-box">
+                                            <p>{{\App\Models\Tariff::getAnnotation($tariff->tariff_annotation_id)->title}}!</p>
+                                            <p class="sub-discount">{{\App\Models\Tariff::getAnnotation($tariff->tariff_annotation_id)->text}}</p>
+                                        </div>
                                     </div>
-                                    <p class="fs-5 fw-semibold">Bez zobowiązań</p>
-                                </div>
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{asset('images/Vector%203.png')}}" alt="">
+                                @else
+                                    <div class="offer-head">
+                                        <p class="fs-1 text-white fw-bold text-center mb-1">{{$tariff->title}}</p>
+                                        <p class="text-white text-center">{{$tariff->announce}}</p>
                                     </div>
-                                    <p class="fs-5 fw-semibold">Bezpłatna pomoc techniczna</p>
-                                </div>
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{asset('images/Vector%203.png')}}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Pełna funkcjonalność aplikacji</p>
+                                @endif
+                                <p class="fs-1 fw-semibold text-center mb-1">{{$tariff->price}} zł</p>
+                                <p class="text-center">NETTO MIESIĘCZNIE</p>
+                                <div class="mx-auto offer-list">
+                                    @if(strlen($tariff->list) > 0)
+                                        @foreach(\App\Models\Tariff::getListList($tariff->id) as $li)
+                                            <div class="d-flex column-gap-2 align-items-center">
+                                                <div class="rounded-circle offer-bullet text-center">
+                                                    <img src="{{ asset('images/Vector%203.png') }}" alt="">
+                                                </div>
+                                                <p class="fs-5 fw-semibold">{{$li['text']}}</p>
+                                            </div>
+                                        @endforeach
+                                    @endif
+{{--                                    <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                        <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                            <img src="{{asset('images/Vector%203.png')}}" alt="">--}}
+{{--                                        </div>--}}
+{{--                                        <p class="fs-5 fw-semibold">Bez zobowiązań</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                        <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                            <img src="{{asset('images/Vector%203.png')}}" alt="">--}}
+{{--                                        </div>--}}
+{{--                                        <p class="fs-5 fw-semibold">Bezpłatna pomoc techniczna</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                        <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                            <img src="{{asset('images/Vector%203.png')}}" alt="">--}}
+{{--                                        </div>--}}
+{{--                                        <p class="fs-5 fw-semibold">Pełna funkcjonalność aplikacji</p>--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <div class="d-flex justify-content-center flex-column flex-md-row row-gap-2 column-gap-2 mt-4 px-5">
-                                <a class="btn btn-dark rounded-pill py-2 px-4">Wypróbuj </a>
-                                <a class="btn btn-transparent border border-dark border-2 rounded-pill py-2 px-4">więcej</a>
+                            <div>
+                                <div class="d-flex justify-content-center flex-column flex-md-row row-gap-2 column-gap-2 mt-4 px-5">
+                                    @if(Auth::user())
+                                        @if(\App\Models\UserTariff::where('user_id', Auth::user()->id)->first())
+
+                                            <a class="btn btn-secondary rounded-pill py-2 px-4" style="cursor:none;pointer-events: none;">Niedostępne</a>
+                                        @else
+                                            <a data-action="{{route('try.tariff')}}" class="btn btn-dark try-tariff rounded-pill py-2 px-4" data-token="{{csrf_token()}}">Wypróbuj</a>
+                                        @endif
+                                    @else
+                                        <a class="btn btn-dark rounded-pill py-2 px-4" href="{{url('/login')}}">Wypróbuj </a>
+                                    @endif
+                                    <a href="{{url('/price-page')}}?id={{strtolower($tariff->title)}}" class="btn btn-transparent border border-dark border-2 rounded-pill py-2 px-4">więcej</a>
+                                </div>
+                                <p class="fw-semibold text-center mt-3 mb-0">{{$tariff->trial}} dni za darmo!</p>
                             </div>
-                            <p class="fw-semibold text-center mt-3 mb-0">30 dni za darmo!</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="service-card pb-3">
-                        <div>
-                            <div class="offer-head">
-                                <p class="fs-1 text-white fw-bold text-center mb-1">Basic</p>
-                                <p class="text-white text-center">Mały zespół</p>
-                            </div>
-                            <p class="fs-1 fw-semibold text-center mb-1">149 zł</p>
-                            <p class="text-center">NETTO MIESIĘCZNIE</p>
-                            <div class="mx-auto offer-list">
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Do 5 pracowników</p>
-                                </div>
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Bez zobowiązań</p>
-                                </div>
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Bezpłatna pomoc techniczna</p>
-                                </div>
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Pełna funkcjonalność aplikacji</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="d-flex justify-content-center flex-column flex-md-row row-gap-2 column-gap-2 mt-4 px-5">
-                                <a class="btn btn-dark rounded-pill py-2 px-4">Wypróbuj </a>
-                                <a class="btn btn-transparent border border-dark border-2 rounded-pill py-2 px-4">więcej</a>
-                            </div>
-                            <p class="fw-semibold text-center mt-3 mb-0">30 dni za darmo!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="service-card pb-3">
-                        <div>
-                            <div class="offer-head position-relative">
-                                <p class="fs-1 text-white fw-bold text-center mb-1">Medium</p>
-                                <p class="text-white text-center">Duży zespół</p>
-                                <div class="position-absolute discount-box">
-                                    <p>UDERZYĆ!</p>
-                                    <p class="sub-discount">Wybrany przez 60% klientów</p>
-                                </div>
-                            </div>
-                            <p class="fs-1 fw-semibold text-center mb-1">229 zł</p>
-                            <p class="text-center">NETTO MIESIĘCZNIE</p>
-                            <div class="mx-auto offer-list">
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Do 10 pracowników</p>
-                                </div>
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Bez zobowiązań</p>
-                                </div>
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Bezpłatna pomoc techniczna</p>
-                                </div>
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Pełna funkcjonalność aplikacji</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="d-flex justify-content-center flex-column flex-md-row row-gap-2 column-gap-2 mt-4 px-5">
-                                <a class="btn btn-dark rounded-pill py-2 px-4">Wypróbuj </a>
-                                <a class="btn btn-transparent border border-dark border-2 rounded-pill py-2 px-4">więcej</a>
-                            </div>
-                            <p class="fw-semibold text-center mt-3 mb-0">30 dni za darmo!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="service-card pb-3">
-                        <div>
-                            <div class="offer-head">
-                                <p class="fs-1 text-white fw-bold text-center mb-1">Pro</p>
-                                <p class="text-white text-center">No limit</p>
-                            </div>
-                            <p class="fs-1 fw-semibold text-center mb-1">349 zł</p>
-                            <p class="text-center">NETTO MIESIĘCZNIE</p>
-                            <div class="mx-auto offer-list">
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Do 10 pracowników</p>
-                                </div>
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Bez zobowiązań</p>
-                                </div>
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Bezpłatna pomoc techniczna</p>
-                                </div>
-                                <div class="d-flex column-gap-2 align-items-center">
-                                    <div class="rounded-circle offer-bullet text-center">
-                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">
-                                    </div>
-                                    <p class="fs-5 fw-semibold">Pełna funkcjonalność aplikacji</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="d-flex justify-content-center flex-column flex-md-row row-gap-2 column-gap-2 mt-4 px-5">
-                                <a class="btn btn-dark rounded-pill py-2 px-4">Wypróbuj </a>
-                                <a class="btn btn-transparent border border-dark border-2 rounded-pill py-2 px-4">więcej</a>
-                            </div>
-                            <p class="fw-semibold text-center mt-3 mb-0">30 dni za darmo!</p>
-                        </div>
-                    </div>
-                </div>
+                    @endif
+                @endforeach
+{{--                <div class="col-12 col-md-6 ">--}}
+{{--                    <div class="service-card pb-3">--}}
+{{--                        <div>--}}
+{{--                            <div class="offer-head">--}}
+{{--                                <p class="fs-1 text-white fw-bold text-center mb-1">Solo</p>--}}
+{{--                                <p class="text-white text-center">Dla Ciebie</p>--}}
+{{--                            </div>--}}
+{{--                            <p class="fs-1 fw-semibold text-center mb-1">99 zł</p>--}}
+{{--                            <p class="text-center">NETTO MIESIĘCZNIE</p>--}}
+{{--                            <div class="mx-auto offer-list">--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{asset('images/Vector%203.png')}}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Bez zobowiązań</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{asset('images/Vector%203.png')}}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Bezpłatna pomoc techniczna</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{asset('images/Vector%203.png')}}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Pełna funkcjonalność aplikacji</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <div class="d-flex justify-content-center flex-column flex-md-row row-gap-2 column-gap-2 mt-4 px-5">--}}
+{{--                                <a class="btn btn-dark rounded-pill py-2 px-4">Wypróbuj </a>--}}
+{{--                                <a class="btn btn-transparent border border-dark border-2 rounded-pill py-2 px-4">więcej</a>--}}
+{{--                            </div>--}}
+{{--                            <p class="fw-semibold text-center mt-3 mb-0">30 dni za darmo!</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-12 col-md-6">--}}
+{{--                    <div class="service-card pb-3">--}}
+{{--                        <div>--}}
+{{--                            <div class="offer-head">--}}
+{{--                                <p class="fs-1 text-white fw-bold text-center mb-1">Basic</p>--}}
+{{--                                <p class="text-white text-center">Mały zespół</p>--}}
+{{--                            </div>--}}
+{{--                            <p class="fs-1 fw-semibold text-center mb-1">149 zł</p>--}}
+{{--                            <p class="text-center">NETTO MIESIĘCZNIE</p>--}}
+{{--                            <div class="mx-auto offer-list">--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Do 5 pracowników</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Bez zobowiązań</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Bezpłatna pomoc techniczna</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Pełna funkcjonalność aplikacji</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <div class="d-flex justify-content-center flex-column flex-md-row row-gap-2 column-gap-2 mt-4 px-5">--}}
+{{--                                <a class="btn btn-dark rounded-pill py-2 px-4">Wypróbuj </a>--}}
+{{--                                <a class="btn btn-transparent border border-dark border-2 rounded-pill py-2 px-4">więcej</a>--}}
+{{--                            </div>--}}
+{{--                            <p class="fw-semibold text-center mt-3 mb-0">30 dni za darmo!</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-12 col-md-6">--}}
+{{--                    <div class="service-card pb-3">--}}
+{{--                        <div>--}}
+{{--                            <div class="offer-head position-relative">--}}
+{{--                                <p class="fs-1 text-white fw-bold text-center mb-1">Medium</p>--}}
+{{--                                <p class="text-white text-center">Duży zespół</p>--}}
+{{--                                <div class="position-absolute discount-box">--}}
+{{--                                    <p>UDERZYĆ!</p>--}}
+{{--                                    <p class="sub-discount">Wybrany przez 60% klientów</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <p class="fs-1 fw-semibold text-center mb-1">229 zł</p>--}}
+{{--                            <p class="text-center">NETTO MIESIĘCZNIE</p>--}}
+{{--                            <div class="mx-auto offer-list">--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Do 10 pracowników</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Bez zobowiązań</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Bezpłatna pomoc techniczna</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Pełna funkcjonalność aplikacji</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <div class="d-flex justify-content-center flex-column flex-md-row row-gap-2 column-gap-2 mt-4 px-5">--}}
+{{--                                <a class="btn btn-dark rounded-pill py-2 px-4">Wypróbuj </a>--}}
+{{--                                <a class="btn btn-transparent border border-dark border-2 rounded-pill py-2 px-4">więcej</a>--}}
+{{--                            </div>--}}
+{{--                            <p class="fw-semibold text-center mt-3 mb-0">30 dni za darmo!</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-12 col-md-6">--}}
+{{--                    <div class="service-card pb-3">--}}
+{{--                        <div>--}}
+{{--                            <div class="offer-head">--}}
+{{--                                <p class="fs-1 text-white fw-bold text-center mb-1">Pro</p>--}}
+{{--                                <p class="text-white text-center">No limit</p>--}}
+{{--                            </div>--}}
+{{--                            <p class="fs-1 fw-semibold text-center mb-1">349 zł</p>--}}
+{{--                            <p class="text-center">NETTO MIESIĘCZNIE</p>--}}
+{{--                            <div class="mx-auto offer-list">--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Do 10 pracowników</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Bez zobowiązań</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Bezpłatna pomoc techniczna</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="d-flex column-gap-2 align-items-center">--}}
+{{--                                    <div class="rounded-circle offer-bullet text-center">--}}
+{{--                                        <img src="{{ asset('images/Vector%203.png') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                    <p class="fs-5 fw-semibold">Pełna funkcjonalność aplikacji</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <div class="d-flex justify-content-center flex-column flex-md-row row-gap-2 column-gap-2 mt-4 px-5">--}}
+{{--                                <a class="btn btn-dark rounded-pill py-2 px-4">Wypróbuj </a>--}}
+{{--                                <a class="btn btn-transparent border border-dark border-2 rounded-pill py-2 px-4">więcej</a>--}}
+{{--                            </div>--}}
+{{--                            <p class="fw-semibold text-center mt-3 mb-0">30 dni za darmo!</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
         <div class="container mt-5 mb-5">
-            <form action="" class="callback-form py-5 rounded-3">
+            <form action="" class="callback-form py-5 rounded-3" data-action="{{route('quest.send')}}" data-token="{{csrf_token()}}">
                 <div>
                     <p class="fs-1 text-white fw-bold text-center">Czy masz jakieś pytania?</p>
                     <p class="fs-5 fw-semibold text-white text-center">Zostaw swój numer telefonu, a nasz manager skontaktuje się z Tobą i
@@ -393,7 +469,7 @@
                         <input type="tel" name="phone" class="form-control" id="phone" placeholder="+48 565 655 44">
                     </div>
                     <div class="d-flex justify-content-center mt-5">
-                        <button type="submit" class="btn btn-light callback-btn py-3 rounded-pill">Wysłać</button>
+                        <button type="button" id="quest-send-btn" class="btn btn-light callback-btn py-3 rounded-pill">Wysłać</button>
                     </div>
                 </div>
             </form>
