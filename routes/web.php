@@ -78,6 +78,9 @@ Route::get('/reset-code', function () {
 Route::get('/home/packet-change', function () {
     return view('packet-change');
 })->middleware(['auth', 'verified']);
+Route::get('/home/change-ava', function () {
+    return view('change-ava');
+})->middleware(['auth', 'verified']);
 Route::get('/home/sms-packets', function () {
     return view('sms-packets');
 })->middleware(['auth', 'verified']);
