@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('isComponent')
+    <link rel="stylesheet" href="{{asset('styles/components.css')}}">
+@endsection
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -62,4 +64,5 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 @endsection

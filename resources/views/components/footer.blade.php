@@ -9,11 +9,11 @@
                     05-119 STANISŁAWÓW DRUGI</p>
             </div>
             <div class="mx-auto">
-                <p><a href="index.php" class="text-decoration-none text-white">O aplikacji</a></p>
-                <p><a href="" class="text-decoration-none text-white">Dlaczego warto?</a></p>
-                <p><a href="price-page.php" class="text-decoration-none text-white">Cennik</a></p>
-                <p><a href="" class="text-decoration-none text-white">Pierwsze kroki</a></p>
-                <p><a href="" class="text-decoration-none text-white">FAQ</a></p>
+                <p><a href="{{url('/#o-aplikacji')}}" class="text-decoration-none text-white">O aplikacji</a></p>
+                <p><a href="{{url('/#dlaczego-warto')}}" class="text-decoration-none text-white">Dlaczego warto?</a></p>
+                <p><a href="{{url('/price-page')}}" class="text-decoration-none text-white">Cennik</a></p>
+                <p><a href="{{url('/#pierwsze-kroki')}}" class="text-decoration-none text-white">Pierwsze kroki</a></p>
+                <p><a href="{{url('/#faq')}}" class="text-decoration-none text-white">FAQ</a></p>
             </div>
             <div class="mx-auto">
                 <p class="text-white fw-normal fs-5">
@@ -22,12 +22,12 @@
                     kontakt@myсlient.pl
                 </p>
                 <div class="d-flex column-gap-4 w-100">
-                    <div class="bg-light d-flex align-items-center justify-content-center rounded-2" style="width: 36px; height: 36px">
+                    <a class="bg-light d-flex align-items-center justify-content-center rounded-2" style="width: 36px; height: 36px">
                         <img width="24px" src="{{asset('images/instagram-black.svg')}}" alt="">
-                    </div>
-                    <div class="bg-light d-flex align-items-center justify-content-center rounded-2" style="width: 36px; height: 36px">
+                    </a>
+                    <a class="bg-light d-flex align-items-center justify-content-center rounded-2" style="width: 36px; height: 36px">
                         <img width="14px" src="{{asset('images/facebook-f-black.svg')}}" alt="">
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

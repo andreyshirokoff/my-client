@@ -8,6 +8,9 @@
 @section('btn4')
     active
 @endsection
+@section('footer_style')
+    style="position:absolute;bottom:0;left:0;width:100%"
+@endsection
 
 @section('acc-content')
     <p class="fs-5">System zgłoszeń jest obecnie w przygotowaniu – zapraszamy do skorzystania z formularza zgłoszeniowego – oddzwonimy do Ciebie. Możesz również sam/sama do nas zadzwonić aby uzyskać wsparcie telefoniczne</p>

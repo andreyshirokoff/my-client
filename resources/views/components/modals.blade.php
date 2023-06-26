@@ -44,7 +44,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog callback-modal container">
         <div class="modal-content border border-2 border-dark">
-            <form class="" action="">
+            <form class="" action="" data-action="{{route('quest.send')}}" data-token="{{csrf_token()}}">
                 <button data-bs-dismiss="modal" type="button" class="btn-close position-absolute rounded-circle p-2" aria-label="Close"></button>
                 <p class="fs-2 f-montserat fw-semibold text-center">Wypełnij formularz, a nasz menedżer wkrótce się z Tobą
                     skontaktuje</p>
@@ -55,11 +55,11 @@
                     </div>
                     <div class="col-12 col-lg-6">
                         <label for="name" class="form-label text-end">Wprowadź swój numer telefonu</label>
-                        <input required type="tel" name="name" id="name" class="form-control custom-input" placeholder="+ 456 54 54 54">
+                        <input required type="tel" name="phone" id="phone" class="form-control custom-input" placeholder="+ 456 54 54 54">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-6">
-                    <button type="submit" class="btn btn-dark fs-5 py-3 fw-semibold px-5 rounded-pill">Wysłać</button>
+                    <button type="button" class="btn btn-dark fs-5 py-3 fw-semibold px-5 rounded-pill" id="quest-send-btn-1">Wysłać</button>
                 </div>
             </form>
         </div>

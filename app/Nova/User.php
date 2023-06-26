@@ -13,6 +13,7 @@ use Laravel\Nova\Fields\File;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Stack;
@@ -55,7 +56,9 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make('Avatar', 'image')->maxWidth(50),
+//            Gravatar::make('Avatar', 'image')->maxWidth(50),
+
+            Image::make('Avatar', 'image')->maxWidth(50),
 
             Text::make('Name')
                 ->sortable()

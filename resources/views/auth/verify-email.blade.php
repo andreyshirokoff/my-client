@@ -8,7 +8,9 @@
 @section('footer_style')
     style="position:absolute;bottom:0;left:0;width:100%"
 @endsection
-
+@section('isComponent')
+    <link rel="stylesheet" href="{{asset('styles/components.css')}}">
+@endsection
 @section('content')
     @include('components/header')
     <div class="container mt-5">
@@ -36,4 +38,8 @@
         </div>
     </div>
     @include('components/footer')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="{{asset('js/main.js')}}"></script>
 @endsection

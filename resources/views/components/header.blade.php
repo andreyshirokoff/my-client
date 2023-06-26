@@ -13,12 +13,12 @@
         </div>
         <div class="">
             <div class="d-flex column-gap-3">
-                <div class="bg-dark d-flex align-items-center justify-content-center rounded-2" style="width: 36px; height: 36px">
+                <a class="bg-dark d-flex align-items-center justify-content-center rounded-2" style="width: 36px; height: 36px">
                     <img width="24px" src="{{ asset('images/instagram 1.png') }}" alt="">
-                </div>
-                <div class="bg-dark d-flex align-items-center justify-content-center rounded-2" style="width: 36px; height: 36px">
+                </a>
+                <a class="bg-dark d-flex align-items-center justify-content-center rounded-2" style="width: 36px; height: 36px">
                     <img width="14px" src="{{ asset('images/fbook.png') }}" alt="">
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
                                 <a data-bs-toggle="modal" data-bs-target="#exampleModal" class=" py-3 px-3 btn btn-dark rounded-pill">Wypróbuj za 0 zł</a>
                             </li>
                         @else
-                            <li class="d-none d-lg-block nav-item text-center rounded-2 px-3" style="padding-top: 7px; height: 43px;background:#173F35;">
+                            <li class="d-lg-block nav-item text-center rounded-2 px-3" style="padding-top: 7px; height: 43px;background:#173F35;">
                             <a href="{{url('/home')}}" style="color:white;text-decoration:none;" class="d-flex align-items-center">
 
                                     <img width="23px" src="{{asset('images/user-regular.png')}}" alt=""><span style="margin-left:10px">{{Auth::user()->name}}</span>

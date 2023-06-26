@@ -238,7 +238,23 @@ $(document).click(async(e) => {
 
         if(!validateEmail(email))
         {
-            alert('Adres pocztowy jest nieprawidłowy. Przykład: example@gmail.com')
+            // alert('Adres pocztowy jest nieprawidłowy. Przykład: example@gmail.com')
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'Adres pocztowy jest nieprawidłowy. Przykład: example@gmail.com'
+            })
             $('#email', block).css('box-shadow', boxShadow)
         }
 
@@ -342,6 +358,66 @@ $(document).click(async(e) => {
             })
         }
     }
+    if($(e.target).is('#quest-send-btn-1'))
+    {
+        $('input').each((i, inp) => {
+            $(inp).css('box-shadow', 'none')
+        })
+        $('select').each((s, sel) => {
+            $(sel).css('box-shadow', 'none')
+        })
+        $('textarea').each((t, tex) => {
+            $(tex).css('box-shadow', 'none')
+        })
+
+        let boxShadow = '0 0 4px red'
+
+
+        let block = $(e.target).closest('form')
+        let url = $(block).attr('data-action')
+
+        let name = $('#name', block).val()
+        let phone = $('#phone', block).val()
+
+        if(!name) $('#name', block).css('box-shadow', boxShadow)
+        if(!phone) $('#phone', block).css('box-shadow', boxShadow)
+
+        let dataFilter = new FormData();
+        dataFilter.append('_token', $(block).attr('data-token'))
+        dataFilter.append('name', name)
+        dataFilter.append('phone', phone)
+
+        const request = await fetch(url, {
+            method: 'POST',
+            body: dataFilter
+        })
+
+        const result = await request.text()
+        if(result.includes('SUCCESS'))
+        {
+            $('#name', block).val('')
+            $('#phone', block).val('')
+            $('#exampleModal').modal('hide')
+            // notification('Żądanie wysłane pomyślnie')
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Żądanie wysłane pomyślnie'
+            })
+        }
+    }
     if($(e.target).is('#route-to-tariffs'))
     {
         window.location.href = '/home/packet-change';
@@ -418,7 +494,23 @@ $(document).click(async(e) => {
         }
         else
         {
-            alert('Błędny kod')
+            // alert('Błędny kod')
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'Błędny kod'
+            })
         }
     }
     // if($(e.target).is('.ava-mes'))
@@ -432,7 +524,23 @@ $(document).click(async(e) => {
     // }
     if($(e.target).is('#call-verify'))
     {
-        alert('Proszę zweryfikować swój numer telefonu!')
+        // alert('Proszę zweryfikować swój numer telefonu!')
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'error',
+            title: 'Proszę zweryfikować swój numer telefonu!'
+        })
     }
 })
 
