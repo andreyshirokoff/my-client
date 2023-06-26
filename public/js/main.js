@@ -75,44 +75,144 @@ $('#home-place').click(async(e) => {
 })
 
 $(document).click(async(e) => {
+    // if($(e.target).is('.try-tariff'))
+    // {
+    //     let url = $(e.target).attr('data-action')
+    //     let block = $(e.target).closest('.tariff-block')
+    //
+    //     let dataFilter = new FormData();
+    //     dataFilter.append('_token', $(e.target).attr('data-token'))
+    //     dataFilter.append('tariff_id', $(block).attr('data-id'))
+    //
+    //     const request = await fetch(url, {
+    //         method: 'POST',
+    //         body: dataFilter
+    //     })
+    //     const result = await request.text()
+    //     if(result.includes('SUCCESS'))
+    //     {
+    //         window.location.href = '/home';
+    //     }
+    // }
     if($(e.target).is('.try-tariff'))
     {
-        let url = $(e.target).attr('data-action')
-        let block = $(e.target).closest('.tariff-block')
-
-        let dataFilter = new FormData();
-        dataFilter.append('_token', $(e.target).attr('data-token'))
-        dataFilter.append('tariff_id', $(block).attr('data-id'))
-
-        const request = await fetch(url, {
-            method: 'POST',
-            body: dataFilter
-        })
-        const result = await request.text()
-        if(result.includes('SUCCESS'))
-        {
-            window.location.href = '/home';
-        }
+        $('#tariff-get-confirm').attr('data-id', $(e.target).closest('.tariff-block').attr('data-id'))
+        $('#tariff-get-confirm').attr('data-action', $(e.target).attr('data-action'))
+        $('#tariff-get-confirm').attr('data-token', $(e.target).attr('data-token'))
     }
     if($(e.target).is('.try-packet'))
     {
-        let url = $(e.target).attr('data-action')
-        let block = $(e.target).closest('.packet-block')
+        $('#packet-get-confirm').attr('data-id', $(e.target).closest('.packet-block').attr('data-id'))
+        $('#packet-get-confirm').attr('data-action', $(e.target).attr('data-action'))
+        $('#packet-get-confirm').attr('data-token', $(e.target).attr('data-token'))
+    }
+    if($(e.target).is('#modal-submit'))
+    {
+        if($(e.target).closest('.modal').attr('id') == 'tariff-get-confirm') {
 
-        let dataFilter = new FormData();
-        dataFilter.append('_token', $(e.target).attr('data-token'))
-        dataFilter.append('packet_id', $(block).attr('data-id'))
+            let block = $(e.target).closest('.modal')
+            let url = $(block).attr('data-action')
 
-        const request = await fetch(url, {
-            method: 'POST',
-            body: dataFilter
-        })
-        const result = await request.text()
-        if(result.includes('SUCCESS'))
+            let dataFilter = new FormData();
+            dataFilter.append('_token', $(block).attr('data-token'))
+            dataFilter.append('tariff_id', $(block).attr('data-id'))
+
+            const request = await fetch(url, {
+                method: 'POST',
+                body: dataFilter
+            })
+            const result = await request.text()
+            if (result.includes('SUCCESS')) {
+                // window.location.href = '/home';
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Taryfa została zastosowana pomyślnie'
+                })
+
+                setTimeout(() => {
+                    window.location.href = '/home';
+                }, 1000)
+            }
+
+        }
+        if($(e.target).closest('.modal').attr('id') == 'packet-get-confirm')
         {
-            window.location.href = '/home';
+
+            let block = $(e.target).closest('.modal')
+            let url = $(block).attr('data-action')
+
+            let dataFilter = new FormData();
+            dataFilter.append('_token', $(block).attr('data-token'))
+            dataFilter.append('packet_id', $(block).attr('data-id'))
+
+            const request = await fetch(url, {
+                method: 'POST',
+                body: dataFilter
+            })
+            const result = await request.text()
+            if(result.includes('SUCCESS'))
+            {
+                // window.location.href = '/home';
+
+                // $(e.target).closest('.modal').modal('hide')
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Pakiet został zastosowany pomyślnie'
+                })
+
+                setTimeout(() => {
+                    window.location.href = '/home';
+                }, 1000)
+            }
         }
     }
+    if($(e.target).is('#modal-cancel'))
+    {
+        $(e.target).closest('.modal').modal('hide')
+    }
+    // if($(e.target).is('.try-packet'))
+    // {
+    //     let url = $(e.target).attr('data-action')
+    //     let block = $(e.target).closest('.packet-block')
+    //
+    //     let dataFilter = new FormData();
+    //     dataFilter.append('_token', $(e.target).attr('data-token'))
+    //     dataFilter.append('packet_id', $(block).attr('data-id'))
+    //
+    //     const request = await fetch(url, {
+    //         method: 'POST',
+    //         body: dataFilter
+    //     })
+    //     const result = await request.text()
+    //     if(result.includes('SUCCESS'))
+    //     {
+    //         window.location.href = '/home';
+    //     }
+    // }
     if($(e.target).is('#tech-send-btn'))
     {
         $('input').each((i, inp) => {
@@ -164,7 +264,24 @@ $(document).click(async(e) => {
             $('#phone', block).val('')
             $('#email', block).val('')
             $('#text', block).val('')
-            notification('Żądanie wysłane pomyślnie')
+            // notification('Żądanie wysłane pomyślnie')
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Żądanie wysłane pomyślnie'
+            })
         }
     }
     if($(e.target).is('#quest-send-btn'))
@@ -205,7 +322,24 @@ $(document).click(async(e) => {
         {
             $('#name', block).val('')
             $('#phone', block).val('')
-            notification('Żądanie wysłane pomyślnie')
+            // notification('Żądanie wysłane pomyślnie')
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Żądanie wysłane pomyślnie'
+            })
         }
     }
     if($(e.target).is('#route-to-tariffs'))
@@ -260,7 +394,26 @@ $(document).click(async(e) => {
             const result = await request.text()
             if(result.includes('SUCCESS'))
             {
-                window.location.href = '/home';
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Numer telefonu zweryfikowany pomyślnie'
+                })
+
+                setTimeout(() => {
+                    window.location.href = '/home';
+                }, 1000)
             }
         }
         else
@@ -268,8 +421,23 @@ $(document).click(async(e) => {
             alert('Błędny kod')
         }
     }
-
+    // if($(e.target).is('.ava-mes'))
+    // {
+    //     $('.ava-mes').css('display', 'none')
+    //     $('.ava-form').css('display', 'flex')
+    // }
+    // if($(e.target).is('.file-input-helper'))
+    // {
+    //     $('.file-input').trigger('click')
+    // }
+    if($(e.target).is('#call-verify'))
+    {
+        alert('Proszę zweryfikować swój numer telefonu!')
+    }
 })
+
+
+
 
 function validateEmail(email) {
     // Регулярное выражение для проверки формата почтового адреса
@@ -279,30 +447,33 @@ function validateEmail(email) {
     return emailRegex.test(email);
 }
 
-function notification(text)
-{
-    $('.confirm-message').css('display', 'block')
-    $('.confirm-message').css('opacity', '1')
-    $('.confirm-message').html(text)
-    setTimeout(() => {
-        document.querySelector('.confirm-message').opacity = '0'
-        $('.confirm-message').css('display', 'none')
-        $('.confirm-message').html('')
-    }, 3000)
-}
+// function notification(text)
+// {
+//     $('.confirm-message').css('display', 'block')
+//     $('.confirm-message').css('opacity', '1')
+//     $('.confirm-message').html(text)
+//     setTimeout(() => {
+//         document.querySelector('.confirm-message').opacity = '0'
+//         $('.confirm-message').css('display', 'none')
+//         $('.confirm-message').html('')
+//     }, 3000)
+//
+// }
 
-function updateCounter() {
-    // Вывод значения счетчика на страницу
-    $('#reset-code-repeater span').text(count);
+// function updateCounter() {
+//     // Вывод значения счетчика на страницу
+//     $('#reset-code-repeater span').text(count);
+//
+//     // Уменьшение значения счетчика
+//     count--;
+//
+//     // Проверка, если счетчик достиг нуля, останавливаем обратный отсчет
+//     if (count < 0) {
+//         clearInterval(interval);
+//     }
+// }
 
-    // Уменьшение значения счетчика
-    count--;
 
-    // Проверка, если счетчик достиг нуля, останавливаем обратный отсчет
-    if (count < 0) {
-        clearInterval(interval);
-    }
-}
 
 
 

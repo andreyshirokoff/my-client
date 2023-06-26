@@ -12,6 +12,7 @@ use App\Nova\TariffAnnotation;
 use App\Nova\TechSupport;
 use App\Nova\User;
 use App\Nova\Role;
+use App\Nova\UserPacket;
 use App\Nova\UserTariff;
 use Illuminate\Support\Facades\Gate;
 
@@ -42,6 +43,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(User::class),
                     MenuItem::resource(Role::class),
                     MenuItem::resource(UserTariff::class),
+                    MenuItem::resource(UserPacket::class),
                 ])->icon('user-group')->collapsable(),
 
                 MenuSection::make('Produkty', [

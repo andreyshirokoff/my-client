@@ -25,10 +25,10 @@
                     <div class="mt-3">
                         <label class="form-label" for="code0">Wpisz kod z SMS-a</label>
                         <div class="custom-num-input d-flex column-gap-2 mt-3">
-                            <input required type="number" class="border border-bottom border-0" name="code0" id="code0" min="0" max="9">
-                            <input required type="number" class="border border-bottom border-0" name="code1" id="code1" min="0" max="9">
-                            <input required type="number" class="border border-bottom border-0" name="code2" id="code2" min="0" max="9">
-                            <input required type="number" class="border border-bottom border-0" name="code3" id="code3" min="0" max="9">
+                            <input required type="number" class="border border-bottom border-0" name="code0" data-name="code[]" id="code0" min="0" max="9">
+                            <input required type="number" class="border border-bottom border-0" name="code1" data-name="code[]" id="code1" min="0" max="9">
+                            <input required type="number" class="border border-bottom border-0" name="code2" data-name="code[]" id="code2" min="0" max="9">
+                            <input required type="number" class="border border-bottom border-0" name="code3" data-name="code[]" id="code3" min="0" max="9">
                         </div>
                     </div>
                     <button type="button" class="btn btn-dark w-100 mt-5 py-4 fs-5 rounded-pill" id="submit-sms-code">Wysłać</button>
@@ -40,7 +40,7 @@
     @include('components/footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
     <script>
-        let numInputs = document.querySelectorAll('input[name="code[]"]');
+        let numInputs = document.querySelectorAll('input[data-name="code[]"]');
         let counter = 0;
         numInputs.forEach(function (element) {
             element.addEventListener('keydown', function (evt) {
@@ -52,5 +52,6 @@
             })
         })
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script src="{{asset('js/main.js')}}"></script>
 @endsection

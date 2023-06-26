@@ -54,6 +54,8 @@ class Packet extends Resource
                 ->rules('required'),
             Boolean::make('Czy ten produkt jest próbny?', 'is_test')->sortable()
                 ->rules('required'),
+            Boolean::make('Czy ten produkt jest aktywny?', 'is_active')->sortable()
+                ->rules('required'),
         ];
     }
 

@@ -151,7 +151,7 @@
             <p class="text-center fs-1 fw-bold">Dlaczego warto?</p>
             <p class="fs-5 text-center">MyClient to połączenie wielu firm, które dołożyły starań by zapewnić naszej aplikacji jak
                 najlepszy start. Poprzez wsparcie technologiczne, marketingowe lub doradztwo.</p>
-            <section class="splide" id="slider" aria-labelledby="carousel-heading">
+            <section class="splide" id="slider" aria-labelledby="carousel-heading" style="height: 72px;">
                 <div class="splide__track">
                     <ul class="splide__list">
                         @foreach(\App\Models\Partner::getArray() as $partner)
@@ -260,8 +260,13 @@
                                         @if(\App\Models\UserTariff::where('user_id', Auth::user()->id)->first())
 
                                             <a class="btn btn-secondary rounded-pill py-2 px-4" style="cursor:none;pointer-events: none;">Niedostępne</a>
+                                        @elseif(
+                                            !\App\Models\UserTariff::where('user_id', Auth::user()->id)->first()
+                                            && \App\Models\User::where('id', Auth::user()->id)->first()->is_phone_confirm == 0
+                                        )
+                                            <a class="btn btn-dark rounded-pill py-2 px-4" id="call-verify">Wypróbuj</a>
                                         @else
-                                            <a data-action="{{route('try.tariff')}}" class="btn btn-dark try-tariff rounded-pill py-2 px-4" data-token="{{csrf_token()}}">Wypróbuj</a>
+                                            <a data-action="{{route('try.tariff')}}" class="btn btn-dark try-tariff rounded-pill py-2 px-4" data-token="{{csrf_token()}}" data-bs-toggle="modal" data-bs-target="#tariff-get-confirm">Wypróbuj</a>
                                         @endif
                                     @else
                                         <a class="btn btn-dark rounded-pill py-2 px-4" href="{{url('/login')}}">Wypróbuj </a>
@@ -536,5 +541,6 @@
             splide.mount();
         } );
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script src="{{asset('js/main.js')}}"></script>
 @endsection

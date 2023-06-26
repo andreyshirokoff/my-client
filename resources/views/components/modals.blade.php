@@ -1,4 +1,46 @@
 <?php ?>
+<div class="modal fade" id="packet-get-confirm" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+     aria-hidden="true" data-id="0" data-token="" data-action="">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="padding:0!important;">
+            <div class="modal-header">
+                <h5 class="modal-title h5" id="modalTitleId">Potwierdź działanie</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex flex-column" data-modal="info-block">
+                Czy na pewno chcesz wypróbować ten pakiet?
+            </div>
+            <!--            <div class="modal-date" style="padding:var(--bs-modal-padding)">-->
+            <!--                <input type="date" class="form-control" value="">-->
+            <!--            </div>-->
+            <div class="modal-footer justify-content-center" style="gap:10px">
+                <button id="modal-submit" type="button" class="modal-btn btn btn-success">OK</button>
+                <button id="modal-cancel" type="button" class="modal-btn btn btn-secondary">Anulować</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="tariff-get-confirm" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+     aria-hidden="true" data-id="0" data-token="" data-action="">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="padding:0!important;">
+            <div class="modal-header">
+                <h5 class="modal-title h5" id="modalTitleId">Potwierdź działanie</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex flex-column" data-modal="info-block">
+                Czy naprawdę chcesz wypróbować tę taryfę?
+            </div>
+            <!--            <div class="modal-date" style="padding:var(--bs-modal-padding)">-->
+            <!--                <input type="date" class="form-control" value="">-->
+            <!--            </div>-->
+            <div class="modal-footer justify-content-center" style="gap:10px">
+                <button id="modal-submit" type="button" class="modal-btn btn btn-success">OK</button>
+                <button id="modal-cancel" type="button" class="modal-btn btn btn-secondary">Anulować</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog callback-modal container">
         <div class="modal-content border border-2 border-dark">

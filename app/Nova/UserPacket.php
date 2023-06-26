@@ -3,7 +3,10 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class UserPacket extends Resource
@@ -41,6 +44,14 @@ class UserPacket extends Resource
     {
         return [
             ID::make()->sortable(),
+            Number::make('Identyfikator użytkownika', 'user_id')->sortable()
+                ->rules('required'),
+            BelongsTo::make('Packet', 'packet')->sortable()
+                ->displayUsing(function($packet){
+                    return $packet->title;
+                }),
+            DateTime::make('Data rozpoczęcia', 'created_at')->sortable()
+                ->rules('required'),
         ];
     }
 

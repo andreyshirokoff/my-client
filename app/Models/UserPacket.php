@@ -22,4 +22,9 @@ class UserPacket extends Model
         $class = new self();
         return $class->all();
     }
+
+    public function packet()
+    {
+        return $this->belongsTo(Packet::class);
+    }
 }

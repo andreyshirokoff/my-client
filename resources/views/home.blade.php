@@ -8,8 +8,15 @@
 
 @section('acc-content')
     <div class="d-flex column-gap-5 flex-column flex-lg-row row-gap-4">
-        <div class="img-wrapper user-img-container">
-            <img src="{{asset('images/user-solid-grey.png')}}" alt="" class="user-img">
+        <div>
+            <div class="img-wrapper user-img-container">
+                @if(\App\Models\User::where('id', Auth::user()->id)->first()->image != null)
+                    <img src="{{asset('/storage/'.\App\Models\User::where('id', Auth::user()->id)->first()->image)}}" alt="" class="user-img">
+                @else
+                    <img src="{{asset('images/user-solid-grey.png')}}" alt="" class="user-img">
+                @endif
+            </div>
+            <livewire:upload-image-form />
         </div>
         <div class="info-container">
             <div class="d-flex flex-column flex-md-row justify-content-start column-gap-5 mb-2">
@@ -26,7 +33,7 @@
                         @else
                         <i class="fa-solid fa-check" style="color:green;margin-right:10px"></i>
                         @endif
-                        {{ $phone }}
+                        {{ \App\Models\User::getPhone() }}
                         @if(\App\Models\User::where('id', Auth::user()->id)->first()->is_phone_confirm != 1)
                                 <a href="{{url('/reset-code')}}" style="font-size: 14px;margin-left:10px">potwierdzać</a>
                         @endif
@@ -44,12 +51,12 @@
                 </div>
                 <div data-user="{{Auth::user()->id}}" data-action="{{route('add.req')}}" data-token="{{csrf_token()}}" class="profile-edit-form">
 
-                    <p class="fs-5 profile-edit" id="profile-edit-title-p">@if($userRequisite){{$userRequisite->title}}@else @endif</p>
-                    <input class="form-control profile-edit-input hidden" id="profile-edit-title" style="margin-bottom:10px" type="text" value="@if($userRequisite){{$userRequisite->title}}@else @endif">
-                    <p class="fs-5 profile-edit" id="profile-edit-address-p">@if($userRequisite){{$userRequisite->address}}@else @endif</p>
-                    <input class="form-control profile-edit-input hidden" id="profile-edit-address" style="margin-bottom:10px" type="text" value="@if($userRequisite){{$userRequisite->address}}@else @endif">
-                    <p class="fs-5 profile-edit" id="profile-edit-nip-p">@if($userRequisite){{$userRequisite->nip}}@else @endif</p>
-                    <input class="form-control profile-edit-input hidden" id="profile-edit-nip" type="text" value="@if($userRequisite){{$userRequisite->nip}}@else @endif">
+                    <p class="fs-5 profile-edit" id="profile-edit-title-p">@if(\App\Models\User::getrequisites()){{\App\Models\User::getrequisites()->title}}@else @endif</p>
+                    <input class="form-control profile-edit-input hidden" id="profile-edit-title" style="margin-bottom:10px" type="text" value="@if(\App\Models\User::getrequisites()){{\App\Models\User::getrequisites()->title}}@else @endif">
+                    <p class="fs-5 profile-edit" id="profile-edit-address-p">@if(\App\Models\User::getrequisites()){{\App\Models\User::getrequisites()->address}}@else @endif</p>
+                    <input class="form-control profile-edit-input hidden" id="profile-edit-address" style="margin-bottom:10px" type="text" value="@if(\App\Models\User::getrequisites()){{\App\Models\User::getrequisites()->address}}@else @endif">
+                    <p class="fs-5 profile-edit" id="profile-edit-nip-p">@if(\App\Models\User::getrequisites()){{\App\Models\User::getrequisites()->nip}}@else @endif</p>
+                    <input class="form-control profile-edit-input hidden" id="profile-edit-nip" type="text" value="@if(\App\Models\User::getrequisites()){{\App\Models\User::getrequisites()->nip}}@else @endif">
                 </div>
             </div>
             <a href="{{url('/home/password')}}" class="btn btn-dark rounded-pill" id="change-pwd-btn">Zmień hasło</a>
@@ -89,14 +96,18 @@
     </div>
     <p class="fw-bold fs-2 mt-5">Historia zamówień</p>
     <div id="order-history">
-        @foreach(\App\Models\HistoryPurchase::where('user_id', Auth::user()->id)->first()->paginate(5) as $item)
+        @if(\App\Models\HistoryPurchase::where('user_id', Auth::user()->id)->first())
+        @foreach(\App\Models\HistoryPurchase::where('user_id', Auth::user()->id)->paginate(5) as $item)
 
         <p>{{\App\Models\HistoryPurchase::getDate($item->created_at)}}</p>
         <p class="fs-5 fw-semibold">Zakup pakietu {{$item->product_title}}</p>
 {{--        <p>10.12.2022</p>--}}
 {{--        <p class="fs-5 fw-semibold">Zakup pakietu 100 SMS</p>--}}
         @endforeach
-        {{\App\Models\HistoryPurchase::where('user_id', Auth::user()->id)->first()->paginate(5)->links()}}
+        @endif
+        @if(\App\Models\HistoryPurchase::where('user_id', Auth::user()->id)->first())
+        {{\App\Models\HistoryPurchase::where('user_id', Auth::user()->id)->paginate(5)->links()}}
+        @endif
     </div>
 @endsection
 

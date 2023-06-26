@@ -56,7 +56,7 @@ class AjaxController extends Controller
                 'user_id' => $userId,
                 'product_type' => 'tariff',
                 'product_id' => $tariffId,
-                'product_title' => Packet::where('id', $tariffId)->first()->title,
+                'product_title' => Tariff::where('id', $tariffId)->first()->title,
             ]);
 
             return 'SUCCESS';

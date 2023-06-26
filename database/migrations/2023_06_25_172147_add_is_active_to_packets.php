@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('img')->after('two_factor_recovery_codes');
+        Schema::table('packets', function (Blueprint $table) {
+            $table->boolean('is_active')->after('updated_at')->default(0);
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['img']);
+        Schema::table('packets', function (Blueprint $table) {
+            $table->dropColumn('is_active');
         });
     }
 };

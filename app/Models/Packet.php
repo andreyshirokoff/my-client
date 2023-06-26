@@ -16,7 +16,8 @@ class Packet extends Model
         'price',
         'price_for_item',
         'quantity',
-        'is_test'
+        'is_test',
+        'is_active',
     ];
 
     public static function getArray()

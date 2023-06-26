@@ -43,7 +43,7 @@ class Partner extends Resource
     {
         return [
             ID::make()->sortable(),
-            Image::make('image', 'image')->disk('public'),
+            File::make('image', 'image')->disk('public'),
         ];
     }
 

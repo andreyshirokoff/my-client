@@ -181,8 +181,13 @@
                                         @if(\App\Models\UserTariff::where('user_id', Auth::user()->id)->first())
 
                                             <a class="btn btn-secondary rounded-pill py-2 px-4" style="cursor:none;pointer-events: none;">Niedostępne</a>
+                                        @elseif(
+                                            !\App\Models\UserTariff::where('user_id', Auth::user()->id)->first()
+                                            && \App\Models\User::where('id', Auth::user()->id)->first()->is_phone_confirm == 0
+                                        )
+                                            <a class="btn btn-dark rounded-pill py-2 px-4" id="call-verify">Wypróbuj</a>
                                         @else
-                                            <a data-action="{{route('try.tariff')}}" class="btn btn-dark try-tariff rounded-pill py-2 px-4" data-token="{{csrf_token()}}">Wypróbuj</a>
+                                            <a data-action="{{route('try.tariff')}}" class="btn btn-dark try-tariff rounded-pill py-2 px-4" data-token="{{csrf_token()}}" data-bs-toggle="modal" data-bs-target="#tariff-get-confirm">Wypróbuj</a>
                                         @endif
                                     @else
                                         <a class="btn btn-dark rounded-pill py-2 px-4" href="{{url('/login')}}">Wypróbuj </a>
@@ -577,5 +582,6 @@
 </div>
 @include('components/footer')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 <script src="{{asset('js/main.js')}}"></script>
 @endsection
