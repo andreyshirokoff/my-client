@@ -155,7 +155,7 @@
                 <div class="splide__track">
                     <ul class="splide__list">
                         @foreach(\App\Models\Partner::getArray() as $partner)
-                            <li class="splide__slide text-center"><img src="{{asset('/storage/'.$partner->image)}}" alt=""></li>
+                            <li class="splide__slide text-center"><img src="{{asset('/storage/'.$partner->image)}}" alt="{{$partner->title}}"></li>
                         @endforeach
 {{--                        <li class="splide__slide text-center"><img src="{{asset('images/logo2%20(1)%201.png')}}" alt=""></li>--}}
 {{--                        <li class="splide__slide text-center"><img src="{{ asset('images/logo2%20(1)%201.png') }}" alt=""></li>--}}

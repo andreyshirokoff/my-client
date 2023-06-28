@@ -16,7 +16,7 @@
                     <img src="{{asset('images/user-solid-grey.png')}}" alt="" class="user-img">
                 @endif
             </div>
-            <a href="{{url('/home/change-ava')}}" class="ava-mes text-center" style="width:160px;@if(isset($_GET['action']) && $_GET['action'] == 'upload-image')display:none @else display:block @endif">Umieść awatar</a>
+            <a href="{{url('/home/change-ava')}}" class="ava-mes text-center mt-2" style="width:160px;@if(isset($_GET['action']) && $_GET['action'] == 'upload-image')display:none @else display:block @endif">Umieść awatar</a>
         </div>
         <div class="info-container">
             <div class="d-flex flex-column flex-md-row justify-content-start column-gap-5 mb-2">

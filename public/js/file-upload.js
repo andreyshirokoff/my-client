@@ -25,7 +25,7 @@
         setTimeout(() => {
             document.getElementById('js-file-name').innerHTML = this.files[0].name;
             document.querySelectorAll('.file-input')[0].classList.remove('file-input--active');
-        }, 0)
+        }, 700)
     }, false);
 
     if(supportDrag){

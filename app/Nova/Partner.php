@@ -44,8 +44,8 @@ class Partner extends Resource
     {
         return [
             ID::make()->sortable(),
+            Image::make('image', 'image')->maxWidth(100),
             Text::make('Tytuł', 'title')->sortable(),
-            File::make('image', 'image')->disk('public'),
         ];
     }
 
