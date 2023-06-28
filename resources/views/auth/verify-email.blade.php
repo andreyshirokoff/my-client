@@ -6,7 +6,7 @@
     active
 @endsection
 @section('footer_style')
-    style="position:absolute;bottom:0;left:0;width:100%"
+    class="footer-absolute"
 @endsection
 @section('isComponent')
     <link rel="stylesheet" href="{{asset('styles/components.css')}}">

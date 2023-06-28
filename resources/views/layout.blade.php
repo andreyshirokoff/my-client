@@ -21,6 +21,7 @@
     @yield('isCode')
     @yield('isPersonal')
     @yield('isSplide')
+    @yield('isFileUpload')
 </head>
 <body>
     <div class="confirm-message"></div>

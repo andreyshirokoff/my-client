@@ -6,7 +6,13 @@
     active
 @endsection
 @section('footer_style')
-    style="position:absolute;bottom:0;left:0;width:100%"
+    class="footer-absolute"
+@endsection
+@section('isFileUpload')
+    <link rel="stylesheet" href="{{asset('styles/file-upload.css')}}">
+@endsection
+@section('isFileUploadJs')
+    <script src="{{asset('js/file-upload.js')}}"></script>
 @endsection
 
 @section('acc-content')

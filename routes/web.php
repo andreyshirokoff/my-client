@@ -23,6 +23,7 @@ Route::get('/', function () {
 //    \App\Http\Controllers\HomeController::getHistory($user->id);
 //});
 Route::view('/test-verify', 'test-verify');
+Route::view('/test-news-edit', 'test-news-edit');
 Route::post('/quest-send', [\App\Http\Controllers\AjaxController::class, 'questSend'])->name('quest.send');
 Route::view('/home', 'home')->middleware(['auth', 'verified']);
 //Route::get('/home', function () {

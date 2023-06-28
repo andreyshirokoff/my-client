@@ -94,6 +94,39 @@ $(document).click(async(e) => {
     //         window.location.href = '/home';
     //     }
     // }
+    if($(e.target).is('#send-image-btn'))
+    {
+        let block = $(e.target).closest('.ava-form')
+        let input = $('#js-file-input', block)
+        let filename = $(input).val()
+        if(filename.length > 0)
+        {
+            var isImage = /\.(jpeg|jpg|gif|png)$/.test(filename.toLowerCase());
+            if(isImage)
+            {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Plik przesłany pomyślnie'
+                })
+            }
+        }
+
+
+
+    }
+
     if($(e.target).is('.try-tariff'))
     {
         $('#tariff-get-confirm').attr('data-id', $(e.target).closest('.tariff-block').attr('data-id'))
@@ -239,6 +272,7 @@ $(document).click(async(e) => {
         if(!validateEmail(email))
         {
             // alert('Adres pocztowy jest nieprawidłowy. Przykład: example@gmail.com')
+            // const Toast = Swal.mixin({
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -553,6 +587,27 @@ function validateEmail(email) {
 
     // Проверяем соответствие строки регулярному выражению
     return emailRegex.test(email);
+}
+
+function fileUploadError(message)
+{
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: 'error',
+        title: message
+    })
+
 }
 
 // function notification(text)

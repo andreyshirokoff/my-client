@@ -159,3 +159,27 @@ footer {
     top: 40px;
     transition: all 0.3s ease-in-out;
 }
+
+@media(min-width: 992px)
+{
+    .footer-absolute{
+        position:absolute;
+        bottom:0;
+        left:0;
+        width:100%;
+    }
+}
+
+@media(max-width: 992px){
+    .custom-menu{
+        justify-content: space-between!important;
+    }
+
+}
+
+@media(max-width: 575px)
+{
+    .ava-form{
+        margin: 0 auto;
+    }
+}
